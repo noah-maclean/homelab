@@ -8,11 +8,6 @@
 	- 20 GB HDD
 	- GPU passthrough automatically detected
 - IP: 192.168.1.23
-- create immich/photos folder on 1TB drive in Proxmox shell
-	- `mkdir -p /mnt/pve/media-storage0/immich`
-- link folder to immich in container console
-	- `pct set 102 -mp0 /mnt/pve/media-storage0/immich,mp=/usr/src/upload`
-	- 102 = container ID
 
 - during setup, compilation of one dependency failed, so retried with pihole blocking disabled
 ###  Result

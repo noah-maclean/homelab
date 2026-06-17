@@ -268,9 +268,9 @@
   "active": "87a703f82f18c85e",
   "lastOpenFiles": [
     "containers/immich.md",
-    "containers/glance.md",
-    "logs/2026-06-17.md",
     "containers/tailscale.md",
+    "logs/2026-06-17.md",
+    "containers/glance.md",
     "goals.md",
     "logs/2026-06-16.md",
     "containers",
