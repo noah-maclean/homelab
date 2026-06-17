@@ -3,6 +3,7 @@
 - host:
 	- Immich
 	- Home Assistant
+	- Hermes/OpenClaw
 	- Jellyfin and Arr stack
 	- Crafty Controller
 	- Uptime Kuma

@@ -17,4 +17,4 @@
 
 - personalise
 	- change colours, layout, etc.
-- add 
+- add monitor widget for every container/vm
