@@ -238,11 +238,11 @@
   },
   "active": "2211a9d744f0bcea",
   "lastOpenFiles": [
-    "logs/2026-06-16.md",
     "logs/2026-06-17.md",
+    "goals.md",
+    "logs/2026-06-16.md",
     "containers/glance.md",
     "containers/tailscale.md",
-    "goals.md",
     "containers",
     "logs"
   ]
