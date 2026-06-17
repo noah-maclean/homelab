@@ -69,21 +69,14 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "containers/immich.md",
+                "file": "logs/2026-06-17.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "immich"
+              "title": "2026-06-17"
             }
-          }
-        ],
-        "currentTab": 4
-      },
-      {
-        "id": "6abf45ba84527488",
-        "type": "tabs",
-        "children": [
+          },
           {
             "id": "1246e6cf08572417",
             "type": "leaf",
@@ -98,7 +91,8 @@
               "title": "glance"
             }
           }
-        ]
+        ],
+        "currentTab": 4
       }
     ],
     "direction": "vertical"
@@ -273,8 +267,8 @@
   },
   "active": "87a703f82f18c85e",
   "lastOpenFiles": [
-    "containers/glance.md",
     "containers/immich.md",
+    "containers/glance.md",
     "logs/2026-06-17.md",
     "containers/tailscale.md",
     "goals.md",
