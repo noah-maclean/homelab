@@ -83,12 +83,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "logs/2026-06-17.md",
+                "file": "logs/2026-06-18.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "2026-06-17"
+              "title": "2026-06-18"
             }
           },
           {
@@ -281,8 +281,9 @@
   },
   "active": "c6d90c9d495272f9",
   "lastOpenFiles": [
-    "containers/hermes_agent.md",
     "logs/2026-06-17.md",
+    "logs/2026-06-18.md",
+    "containers/hermes_agent.md",
     "goals.md",
     "containers/immich.md",
     "containers/glance.md",
