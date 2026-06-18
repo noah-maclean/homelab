@@ -69,12 +69,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "logs/2026-06-17.md",
+                "file": "containers/immich.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "2026-06-17"
+              "title": "immich"
             }
           },
           {
@@ -267,10 +267,10 @@
   },
   "active": "87a703f82f18c85e",
   "lastOpenFiles": [
-    "containers/immich.md",
-    "containers/tailscale.md",
     "logs/2026-06-17.md",
     "containers/glance.md",
+    "containers/immich.md",
+    "containers/tailscale.md",
     "goals.md",
     "logs/2026-06-16.md",
     "containers",
