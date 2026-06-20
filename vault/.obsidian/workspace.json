@@ -53,14 +53,14 @@
             "id": "87a703f82f18c85e",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "split-diff-view",
               "state": {
-                "file": "logs/2026-06-20.md",
-                "mode": "source",
-                "source": false
+                "aFile": "vault/.obsidian/workspace.json",
+                "bFile": "vault/.obsidian/workspace.json",
+                "aRef": ""
               },
-              "icon": "lucide-file",
-              "title": "2026-06-20"
+              "icon": "diff",
+              "title": "Diff: workspace.json  (Working Tree)"
             }
           },
           {
@@ -165,8 +165,8 @@
             "state": {
               "type": "git-view",
               "state": {},
-              "icon": "lucide-ghost",
-              "title": "git-view"
+              "icon": "git-pull-request",
+              "title": "Source Control"
             }
           },
           {
@@ -250,8 +250,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 262.5,
-    "collapsed": true
+    "width": 262.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -267,8 +266,8 @@
   },
   "active": "87a703f82f18c85e",
   "lastOpenFiles": [
-    "logs/2026-06-19.md",
     "logs/2026-06-20.md",
+    "logs/2026-06-19.md",
     "logs/2026-06-18.md",
     "logs/2026-06-17.md",
     "containers/hermes_agent.md",
