@@ -1,7 +1,7 @@
 # TODO
 
 - [ ] create separate pages/columns for rasppi and proxmox
-- [ ] run glance agent on rasppi to show server stats
+- [ ] run [glance agent](https://github.com/glanceapp/agent) on rasppi to show server stats
 - [ ] add widgets from [community-widgets](https://github.com/glanceapp/community-widgets)
     - [ ] tailscale devices
     - [ ] immich
