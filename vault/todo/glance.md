@@ -1,0 +1,12 @@
+# TODO
+
+- [ ] create separate pages/columns for rasppi and proxmox
+- [ ] run glance agent on rasppi to show server stats
+- [ ] add widgets from [community-widgets](https://github.com/glanceapp/community-widgets)
+    - [ ] tailscale devices
+    - [ ] immich
+    - [ ] crafty controller
+    - [ ] jellyfin
+    - [ ] gluetun vpn status
+    - [ ] home assistant sensor stats (i have no sensors)
+    - [ ] uptime kuma
