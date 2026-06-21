@@ -12,9 +12,3 @@
 
 - config at `/opt/glance_data/`
 - removed search and a bookmark
-
-## TODO
-
-- personalise
-	- change colours, layout, etc.
-- add monitor widget for every container/vm
