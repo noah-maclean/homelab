@@ -1,0 +1,45 @@
+- name: Homelab
+  width: default
+  hide-desktop-navigation: true
+  center-vertically: true
+  columns:
+      - size: full
+        widgets:
+        - $include: ../widgets/proxmox.yml
+        - $include: ../widgets/tailscale.yml
+        - type: monitor
+          cache: 1m
+          title: Proxmox Containers
+          sites:
+            - title: Proxmox
+              url: http://192.168.1.20:8006
+              allow-insecure: true
+              icon: si:proxmox
+            - title: Home Assistant
+              url: http://192.168.1.31:8123
+              icon: si:homeassistant
+            - title: Crafty Controller
+              url: http://192.168.1.24:8443
+              icon: sh:crafty-controller
+            # TODO:
+            # - title: Hermes Agent
+
+        - type: monitor
+          cache: 1m
+          title: RaspPi
+          sites:
+            - title: Pi-Hole
+              url: http://192.168.1.10/admin
+              icon: si:pi-hole
+        - type: dns-stats
+          service: pihole-v6
+          url: http://192.168.1.10/
+          password: ${PIHOLE}
+          
+
+        - type: bookmarks
+          groups:
+            - title: Proxmox
+              links:
+                - title: Helper Scripts
+                  url: https://community-scripts.org/
