@@ -149,7 +149,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200
+    "width": 200,
+    "collapsed": true
   },
   "right": {
     "id": "a13ff07ce5750562",
@@ -250,8 +251,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 262.5,
-    "collapsed": true
+    "width": 262.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -265,7 +265,7 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "87a703f82f18c85e",
+  "active": "8779e824e51e836d",
   "lastOpenFiles": [
     "logs/2026-06-19.md",
     "logs/2026-06-20.md",
