@@ -10,3 +10,4 @@
     - [ ] gluetun vpn status
     - [ ] home assistant sensor stats (i have no sensors)
     - [ ] uptime kuma
+- [ ] change icons to be consistent (crafty controller does not have an icon on simple icons)
