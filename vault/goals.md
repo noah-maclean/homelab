@@ -10,7 +10,7 @@
 - setup glance to show all containers and related information
     - e.g. link to playit.gg for easy configuration of crafty servers
 - increase storage and RAM
-- setup Nginx and get a domain to make it easily accessible
+- setup Nginx (or similar) and get a domain to make it easily accessible
 - maybe:
 	- NAS OS/file sharing/Nextcloud
 	- Password storage (Vaultwarden)
