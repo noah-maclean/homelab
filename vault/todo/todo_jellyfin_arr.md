@@ -122,6 +122,7 @@ Indexers via Prowlarr ─── Sonarr/Radarr/Lidarr (normal network)
 All services in one compose file under a shared Docker network. Config stored in `/opt/docker/`.
 
 VPN network:
+
 - **Gluetun** — connects to ProtonVPN, exposes qBittorrent's web UI port
 - **qBittorrent** — `network_mode: "service:gluetun"`, no own IP
 - **qsticky** or **qb-port-sync** — sidecar that reads ProtonVPN's forwarded port from Gluetun's API and updates qBittorrent's listen port automatically
@@ -175,7 +176,7 @@ qsticky:
       condition: service_healthy
 ```
 
-All *arr services and Jellyfin stay on the default bridge network (no VPN), so they remain accessible on LAN and can reach indexers directly.
+All \*arr services and Jellyfin stay on the default bridge network (no VPN), so they remain accessible on LAN and can reach indexers directly.
 
 ## Glance Dashboard
 
