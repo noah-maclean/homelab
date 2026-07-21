@@ -15,6 +15,18 @@ git diff -- containers/ # review service-note changes
 
 Do not run operational commands copied from notes against infrastructure unless the task explicitly calls for it.
 
+## Formatting
+
+All Markdown in this vault must pass `markdownlint-cli2` with zero errors before committing. The project config is at `.markdownlint-cli2.jsonc` in the repo root.
+
+To check and auto-fix:
+
+```shell
+npx markdownlint-cli2 --fix "vault/**/*.md"
+```
+
+Run this before every commit. This keeps the entire vault consistently formatted regardless of which tool wrote the file.
+
 ## Writing Style & Naming
 
 Write concise, practical Markdown. Use ATX headings (`#`, `##`), fenced code blocks with a language such as `shell`, and `-` for lists. Preserve the local style of the note being edited, including its indentation. Prefer short, descriptive lowercase filenames with underscores for topical notes (for example, `todo_jellyfin_arr.md`); use ISO dates for logs. Keep commands copyable, include required context such as IPs or prerequisites, and clearly label secrets or values that must not be committed.

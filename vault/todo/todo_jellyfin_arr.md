@@ -23,7 +23,7 @@ Docker-in-LXC research (Jul 2026):
 
 ## LXC Config (`/etc/pve/lxc/<ID>.conf`)
 
-```
+```ini
 features: nesting=1,keyctl=1,fuse=1
 lxc.apparmor.profile: unconfined
 lxc.cap.drop:
@@ -31,7 +31,7 @@ lxc.cap.drop:
 
 ## Storage Mounts
 
-```
+```shell
 pct set <ID> -mp0 /mnt/storage/media,mp=/mnt/media
 pct set <ID> -mp1 /mnt/storage/downloads,mp=/mnt/downloads
 ```
@@ -96,7 +96,7 @@ Fix ownership for unprivileged bind mount: `chown -R 101000:101000 /mnt/storage/
 
 ## Data Flow
 
-```
+```text
   Internet
       |
       ▼
@@ -129,7 +129,7 @@ VPN network:
 
 ProtonVPN setup requires a WireGuard private key from your ProtonVPN account dashboard. Add to `.env`:
 
-```
+```env
 WIREGUARD_PRIVATE_KEY=your_key_here
 SERVER_COUNTRIES=Netherlands
 GLUETUN_API_KEY=<openssl rand -hex 16>
