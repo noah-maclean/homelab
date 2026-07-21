@@ -1,6 +1,6 @@
 # Repository Guidelines
 
-## Project Structure & Content Organization
+## Project Structure & Content Organisation
 
 This repository is a Markdown knowledge vault for the homelab, not an application. Keep durable service notes in `containers/` (for example, `containers/immich.md`), active implementation work in `todo/`, and chronological updates in `logs/` using the `YYYY-MM-DD.md` filename pattern. Use `goals.md` for longer-term priorities. Store a note in the most specific existing area; create a new top-level area only when the content does not fit these categories.
 
