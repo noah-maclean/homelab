@@ -1,12 +1,9 @@
 {
   "config": {
-    "MD007": { "indent": 1 },
-    "MD009": { "br_spaces": 2 },
-    "MD010": false,
+    "MD007": { "indent": 4 },
     "MD013": false,
     "MD024": false,
     "MD033": false,
-    "MD041": false,
-    "MD001": false
+    "MD041": false
   }
 }

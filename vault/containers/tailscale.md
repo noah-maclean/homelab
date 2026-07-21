@@ -3,9 +3,9 @@
 ## Setup
 
 - Debian LXC (default settings)
-	- 1 core
-	- 512 MB RAM and swap
-	- 8GB HDD (could be lowered)
+       - 1 core
+       - 512 MB RAM and swap
+       - 8GB HDD (could be lowered)
 - Resources -> Add -> Device Passthrough -> `/dev/net/tun`
 - IP: 192.169.1.21
 
