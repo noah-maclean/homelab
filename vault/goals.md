@@ -12,10 +12,10 @@ tags:
 
 - host:
        - [ ] Immich
-       - [ ] Home Assistant
+       - [x] Home Assistant
        - [ ] Hermes/OpenClaw
        - [ ] Jellyfin and Arr stack
-       - [ ] Crafty Controller
+       - [x] Crafty Controller
        - [ ] Uptime Kuma
 - setup glance to show all containers and related information
 - e.g. link to playit.gg for easy configuration of crafty servers

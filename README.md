@@ -34,13 +34,13 @@ Additional HDDs auto-merge into `/mnt/storage` via mergerfs.
 | [Glance Dashboard](vault/containers/glance.md)   | LXC           | Self-hosted dashboard (192.168.1.22)         |
 | [Tailscale](vault/containers/tailscale.md)        | LXC           | Mesh VPN + subnet routing (192.168.1.21)    |
 | Pi-hole                          | Raspberry Pi  | DNS ad blocking                              |
+| Home Assistant                   | LXC           | Home automation                              |
+| Crafty Controller                | LXC           | Minecraft/game server manager                |
 
 ### Planned
 
 - Immich — photo backup and management
-- Home Assistant — home automation
 - Jellyfin + \*Arr stack — media server with Sonarr, Radarr, Prowlarr, etc.
-- Crafty Controller — Minecraft/game server manager
 - Uptime Kuma — uptime monitoring
 - Nginx Proxy Manager or Caddy — reverse proxy
 
