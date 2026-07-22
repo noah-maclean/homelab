@@ -1,3 +1,12 @@
+---
+title: Homelab Goals
+type: goals
+updated: 2026-07-22
+tags:
+  - goals
+  - planning
+---
+
 ## Goals
 
 - host:

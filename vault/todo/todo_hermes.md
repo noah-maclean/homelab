@@ -1,3 +1,13 @@
+---
+title: Hermes Agent TODO
+created: 2026-06-20
+type: todo
+tags:
+  - todo
+  - hermes
+  - config
+---
+
 # TODO
 
 - switch to a different provider

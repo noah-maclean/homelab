@@ -1,3 +1,14 @@
+---
+title: Glance Dashboard TODO
+created: 2026-06-16
+type: todo
+tags:
+  - todo
+  - glance
+  - dashboard
+  - monitoring
+---
+
 # TODO
 
 - [ ] create separate pages/columns for rasppi and proxmox

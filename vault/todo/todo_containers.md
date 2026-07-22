@@ -1,3 +1,13 @@
+---
+title: Container Install TODO
+created: 2026-06-16
+type: todo
+tags:
+  - todo
+  - containers
+  - setup
+---
+
 # TODO
 
 - immich

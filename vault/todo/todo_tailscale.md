@@ -1,3 +1,13 @@
+---
+title: Tailscale TODO
+created: 2026-06-16
+type: todo
+tags:
+  - todo
+  - tailscale
+  - networking
+---
+
 # TODO
 
 - [ ] setup rasppi as exit node to block ads anywhere

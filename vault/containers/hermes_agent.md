@@ -1,3 +1,13 @@
+---
+title: Hermes Agent
+status: running
+type: container
+tags:
+  - container
+  - ai
+  - hermes
+---
+
 # Hermes Agent
 
 ## Setup

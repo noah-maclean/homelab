@@ -1,3 +1,13 @@
+---
+title: Glance Dashboard
+status: running
+type: container
+tags:
+  - container
+  - dashboard
+  - monitoring
+---
+
 # Glance
 
 ## Setup

@@ -1,3 +1,13 @@
+---
+title: Tailscale LXC
+status: running
+type: container
+tags:
+  - container
+  - networking
+  - vpn
+---
+
 # Tailscale LXC
 
 ## Setup

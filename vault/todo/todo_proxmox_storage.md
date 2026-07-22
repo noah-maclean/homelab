@@ -1,3 +1,14 @@
+---
+title: Proxmox Storage and Resilience
+created: 2026-06-16
+type: todo
+tags:
+  - todo
+  - proxmox
+  - storage
+  - backup
+---
+
 # Proxmox Storage and Resilience
 
 ## Current Host Layout

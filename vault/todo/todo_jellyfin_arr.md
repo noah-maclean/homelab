@@ -1,3 +1,14 @@
+---
+title: Jellyfin + Arr Stack
+created: 2026-06-16
+type: todo
+tags:
+  - todo
+  - jellyfin
+  - media
+  - arr
+---
+
 # Jellyfin + Arr Stack
 
 ## Decision: Single Privileged LXC with Docker
