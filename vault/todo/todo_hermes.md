@@ -2,6 +2,7 @@
 title: Hermes Agent TODO
 created: 2026-06-20
 type: todo
+author: noah
 tags:
   - todo
   - hermes

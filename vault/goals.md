@@ -2,6 +2,7 @@
 title: Homelab Goals
 type: goals
 updated: 2026-07-22
+author: noah
 tags:
   - goals
   - planning

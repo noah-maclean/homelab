@@ -2,6 +2,7 @@
 title: Glance Dashboard
 status: running
 type: container
+author: noah
 tags:
   - container
   - dashboard

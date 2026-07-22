@@ -2,6 +2,7 @@
 title: Tailscale LXC
 status: running
 type: container
+author: noah
 tags:
   - container
   - networking

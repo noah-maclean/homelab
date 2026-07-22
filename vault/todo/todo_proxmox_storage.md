@@ -2,6 +2,7 @@
 title: Proxmox Storage and Resilience
 created: 2026-06-16
 type: todo
+author: noah
 tags:
   - todo
   - proxmox

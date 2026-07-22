@@ -2,6 +2,7 @@
 title: Hermes Agent
 status: running
 type: container
+author: noah
 tags:
   - container
   - ai

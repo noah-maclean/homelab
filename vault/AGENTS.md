@@ -31,6 +31,28 @@ Run this before every commit. This keeps the entire vault consistently formatted
 
 Write concise, practical Markdown. Use ATX headings (`#`, `##`), fenced code blocks with a language such as `shell`, and `-` for lists. Preserve the local style of the note being edited, including its indentation. Prefer short, descriptive lowercase filenames with underscores for topical notes (for example, `todo_jellyfin_arr.md`); use ISO dates for logs. Keep commands copyable, include required context such as IPs or prerequisites, and clearly label secrets or values that must not be committed.
 
+## Front Matter & Attribution
+
+Every vault note MUST have YAML front matter between `---` delimiters with the following fields:
+
+```yaml
+---
+title: Note Title
+author: <your_name>
+tags:
+  - relevant
+  - tags
+---
+```
+
+- **`title`** — human-readable display name. Match the note's `# Heading` or provide a clearer one.
+- **`author`** — your identifier (`noah`, `hermes`, `claude-code`, etc.). When you create a new note, set `author:` to yourself. When you edit an existing note's content substantially, add or update `author:` to reflect who made the latest meaningful change.
+- **`tags`** — at minimum the note type (`container`, `log`, `todo`, `goals`). Add topical tags (e.g. `networking`, `media`, `proxmox`) for queryability.
+- **`status`** (container notes only) — `running`, `not_started`, `paused`, `broken`.
+- **`date`** / **`created`** / **`updated`** — ISO dates for logs and timelines.
+
+Always run `npx markdownlint-cli2 --fix "vault/**/*.md"` after adding or editing front matter — YAML formatting must pass linting. The config at `.markdownlint-cli2.jsonc` allows front matter `title:` to coexist with body `#` headings.
+
 ## Content Review Guidelines
 
 Treat documentation accuracy as the primary test. Re-read edited commands for quoting, flags, and whether they are safe to paste. For networking, container, or credential guidance, record assumptions and avoid adding live tokens, passwords, private keys, or personal URLs. Update related todo items or logs when a change materially affects current homelab status.

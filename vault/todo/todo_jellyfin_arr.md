@@ -2,6 +2,7 @@
 title: Jellyfin + Arr Stack
 created: 2026-06-16
 type: todo
+author: noah
 tags:
   - todo
   - jellyfin
