@@ -24,3 +24,14 @@ tags:
 - maybe:
        - NAS OS/file sharing/Nextcloud
        - Password storage (Vaultwarden)
+
+## Related
+
+- [[containers/hermes_agent]]
+- [[containers/tailscale]]
+- [[containers/glance]]
+- [[containers/immich]]
+- [[todo/todo_jellyfin_arr]]
+- [[todo/todo_containers]]
+- [[todo/todo_reverse_proxy]]
+- [[todo/todo_proxmox_storage]]

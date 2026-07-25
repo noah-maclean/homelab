@@ -41,3 +41,11 @@ sudo tailscale set --advertise-routes=192.168.1.0/24
 - disable expiry
 
 - now, each container can be accessed using their local IP (192.168.1.xx)
+
+## Related
+
+- [[todo/todo_tailscale]]
+- [[todo/todo_reverse_proxy]]
+- [[containers/glance]]
+- [[containers/hermes_agent]]
+- [[goals]]

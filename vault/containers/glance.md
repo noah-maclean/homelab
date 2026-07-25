@@ -23,3 +23,13 @@ tags:
 
 - config at `/opt/glance_data/`
 - removed search and a bookmark
+
+## Related
+
+- [[todo/todo_glance]]
+- [[todo/todo_jellyfin_arr]]
+- [[todo/todo_reverse_proxy]]
+- [[containers/tailscale]]
+- [[containers/hermes_agent]]
+- [[containers/immich]]
+- [[goals]]

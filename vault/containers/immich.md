@@ -10,3 +10,10 @@ tags:
 ---
 
 # Immich
+
+## Related
+
+- [[todo/todo_containers]]
+- [[todo/todo_glance]]
+- [[todo/todo_proxmox_storage]]
+- [[goals]]

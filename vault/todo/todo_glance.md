@@ -23,3 +23,13 @@ tags:
 - [ ] home assistant sensor stats (i have no sensors)
 - [ ] uptime kuma
 - [ ] change icons to be consistent (crafty controller does not have an icon on simple icons)
+
+## Related
+
+- [[containers/glance]]
+- [[containers/immich]]
+- [[containers/tailscale]]
+- [[todo/todo_jellyfin_arr]]
+- [[todo/todo_containers]]
+- [[todo/todo_reverse_proxy]]
+- [[goals]]

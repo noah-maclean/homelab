@@ -74,3 +74,10 @@ VM/container data -> 2 x 1 TB SSD ZFS mirror: fast-vm
 Media/app data    -> 2 x 1 TB CMR HDD ZFS mirror: bulk
 Backups           -> separate PBS host or rotated/off-site backup disk
 ```
+
+## Related
+
+- [[containers/immich]]
+- [[todo/todo_jellyfin_arr]]
+- [[todo/todo_containers]]
+- [[goals]]

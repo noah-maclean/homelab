@@ -14,3 +14,9 @@ tags:
 - [ ] Proxmox MCP
 - [ ] Crafty Controller MCP
 - [ ] Home Assistant MCP (maybe)
+
+## Related
+
+- [[containers/hermes_agent]]
+- [[todo/todo_hermes]]
+- [[todo/todo_vault]]

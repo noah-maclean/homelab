@@ -16,3 +16,9 @@ tags:
 - set pi as dns server for tailnet
 - Settings -> Nameservers -> Add nameserver -> Custom -> rasppi tailscale IP
 - Enable Override DNS servers
+
+## Related
+
+- [[containers/tailscale]]
+- [[todo/todo_reverse_proxy]]
+- [[goals]]

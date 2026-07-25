@@ -197,3 +197,11 @@ Add widgets after setup:
 - Jellyfin: `http://192.168.1.25:8096`
 - Prowlarr: `http://192.168.1.25:9696`
 - qBittorrent: `http://192.168.1.25:8080`
+
+## Related
+
+- [[containers/glance]]
+- [[todo/todo_proxmox_storage]]
+- [[todo/todo_reverse_proxy]]
+- [[todo/todo_containers]]
+- [[goals]]

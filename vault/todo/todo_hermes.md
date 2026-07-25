@@ -16,3 +16,9 @@ tags:
 - deepseek v4 flash via api/openrouter (offload to pro for harder tasks)
 - opencode go to try different models
 - customise web dashboard
+
+## Related
+
+- [[containers/hermes_agent]]
+- [[todo/todo_mcp]]
+- [[todo/todo_vault]]
