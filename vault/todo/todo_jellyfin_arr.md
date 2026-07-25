@@ -19,7 +19,7 @@ Docker-in-LXC research (Jul 2026):
 - **Unprivileged** LXC + Docker is broken on modern kernels (runc 1.2+): sysctl writes and AppArmor probes can't work through the user namespace — a hard ceiling, not configurable
 - **Privileged** LXC + Docker works reliably with `nesting=1,keyctl=1,fuse=1` and `lxc.apparmor.profile: unconfined`
 - VM would be more isolated but costs ~512MB+ RAM overhead vs \~100MB for LXC; with 16GB total and ~9GB already used, LXC wins on density
-- This is a homelab behind LAN/Tailscale — the security trade-off (privileged LXC = container root = host root) is acceptable for internal services where you control all images
+- This is a homelab behind LAN/[[containers/tailscale|Tailscale]] — the security trade-off (privileged LXC = container root = host root) is acceptable for internal services where you control all images
 
 ## Specs
 
@@ -190,7 +190,7 @@ qsticky:
 
 All \*arr services and Jellyfin stay on the default bridge network (no VPN), so they remain accessible on LAN and can reach indexers directly.
 
-## Glance Dashboard
+## [[containers/glance|Glance Dashboard]]
 
 Add widgets after setup:
 

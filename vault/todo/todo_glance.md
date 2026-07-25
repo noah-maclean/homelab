@@ -12,13 +12,13 @@ tags:
 
 # TODO
 
-- [ ] create separate pages/columns for rasppi and proxmox
+- [ ] create separate pages/columns for rasppi and [[todo/todo_proxmox_storage|proxmox]]
 - [ ] run [glance agent](https://github.com/glanceapp/agent) on rasppi to show server stats
 - [ ] add widgets from [community-widgets](https://github.com/glanceapp/community-widgets)
-- [ ] tailscale devices
-- [ ] immich
+- [ ] [[containers/tailscale|tailscale]] devices
+- [ ] [[containers/immich|immich]]
 - [ ] crafty controller
-- [ ] jellyfin
+- [ ] [[todo/todo_jellyfin_arr|jellyfin]]
 - [ ] gluetun vpn status
 - [ ] home assistant sensor stats (i have no sensors)
 - [ ] uptime kuma

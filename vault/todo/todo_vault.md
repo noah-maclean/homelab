@@ -14,7 +14,7 @@ tags:
 
 - [ ] check front matters
 - [ ] enable nvim front matter creation
-- [ ] enable proxmox mcp to check status of containers and update tags based on that
+- [ ] enable [[todo/todo_mcp|proxmox mcp]] to check status of containers and update tags based on that
 
 ## Related
 

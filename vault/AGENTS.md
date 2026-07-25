@@ -62,3 +62,48 @@ Treat documentation accuracy as the primary test. Re-read edited commands for qu
 ## Commits & Pull Requests
 
 Recent history uses timestamped backup commits, such as `vault backup: 2026-07-08 17:16:10`. For manual commits, use a brief imperative summary scoped to the note, such as `docs: update Tailscale route setup`. Keep each commit focused. Pull requests should explain the operational impact, list files or services affected, link any relevant task, and include screenshots only when documenting rendered layout or visual configuration.
+
+## Linking Conventions
+
+Every note should use **inline wikilinks** where prose mentions another note, plus a **`## Related` section** at the bottom for broader connections. This gives Obsidian's graph view meaningful context while still linking everything topically.
+
+### Inline links (strongest)
+
+Replace bare mentions of other notes with `[[path/to/note|display text]]`:
+
+- In goal/todo lists: `- [ ] [[containers/immich|Immich]]` instead of `- [ ] Immich`
+- In prose: `most stay on [[containers/tailscale|Tailscale]]` instead of `most stay on Tailscale`
+- In headings: `## [[containers/glance|Glance Dashboard]]`
+- Only link the **first** mention of a note per section to avoid clutter.
+
+### Related section (broad connections)
+
+Append after all content, before any trailing blank lines:
+
+```markdown
+## Related
+
+- [[containers/hermes_agent]]
+- [[todo/todo_jellyfin_arr]]
+- [[goals]]
+```
+
+Use this for connections that don't have a natural prose anchor (e.g., a container note linking to its todo items, or goals linking to everything it references).
+
+### What to link
+
+| From | Link to |
+|------|---------|
+| `containers/` notes | Their corresponding `todo/` items, plus related containers |
+| `todo/` notes | The `containers/` notes they reference, plus related todos |
+| `goals.md` | Every `containers/` and `todo/` note it references |
+| Log entries | `containers/` and `todo/` notes mentioned in the day's work |
+
+### Path format
+
+Use **vault-relative paths** — no leading `/`, no `.md` extension:
+
+- `[[containers/glance]]` ✓
+- `[[todo/todo_jellyfin_arr]]` ✓
+- `[[/vault/containers/glance.md]]` ✗
+- `[[glance]]` ✗ (ambiguous with potential future notes)

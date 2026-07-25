@@ -11,16 +11,16 @@ tags:
 ## Goals
 
 - host:
-       - [ ] Immich
+       - [ ] [[containers/immich|Immich]]
        - [x] Home Assistant
-       - [ ] Hermes/OpenClaw
-       - [ ] Jellyfin and Arr stack
+       - [ ] [[containers/hermes_agent|Hermes]]/OpenClaw
+       - [ ] [[todo/todo_jellyfin_arr|Jellyfin and Arr stack]]
        - [x] Crafty Controller
        - [ ] Uptime Kuma
-- setup glance to show all containers and related information
+- setup [[containers/glance|glance]] to show all containers and related information
 - e.g. link to playit.gg for easy configuration of crafty servers
 - increase storage and RAM
-- setup Nginx (or similar) and get a domain to make it easily accessible
+- setup [[todo/todo_reverse_proxy|Nginx (or similar)]] and get a domain to make it easily accessible
 - maybe:
        - NAS OS/file sharing/Nextcloud
        - Password storage (Vaultwarden)
