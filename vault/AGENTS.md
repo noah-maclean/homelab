@@ -56,7 +56,7 @@ tags:
 
 - **`title`** — human-readable display name. Match the note's `# Heading` or provide a clearer one.
 - **`type`** — note category: `container`, `log`, `todo`, or `goals`. Maps to the directory the note lives in. Used for Dataview filtering.
-- **`author`** — your identifier (`noah`, `hermes`, `claude-code`, etc.). When you create a new note, set `author:` to yourself. When you edit an existing note's content substantially, add or update `author:` to reflect who made the latest meaningful change.
+- **`author`** — your identifier (`noah`, `hermes`, `claude-code`, etc.). When you create a new note, set `author:` to yourself. When you make substantial edits, **append** your identifier to the `author:` field (e.g. `author: noah` → `author: noah, hermes`) so the provenance chain records every contributor.
 - **`tags`** — topical tags for Obsidian's tag pane and graph view. Repeat the `type:` value as one tag, then add topic-specific tags (e.g. `networking`, `media`, `proxmox`, `ai`).
 - **`status`** (container notes only) — `running`, `not_started`, `paused`, `broken`.
 - **`date`** / **`created`** / **`updated`** — ISO dates for logs and timelines.
