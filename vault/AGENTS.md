@@ -8,7 +8,7 @@ This repository is a Markdown knowledge vault for the homelab, not an applicatio
 
 **Splitting rule:** Keep all todo items for a single container in one note, separated by subheadings. Only create a separate todo note when the topic relates to multiple containers (e.g., shared infrastructure, cross-cutting config) or is unrelated to any specific container. Do not split per-container todos into individual files.
 
-**Completion & archiving:** Never delete completed items. Mark them with `- [x]` and move them to an `## Archive` section at the bottom of the same note. If an entire subheading's tasks are all done, mark the heading itself with `✓` (e.g. `## Hermes LXC SSH Access ✓`). This preserves a visible history of what was done without cluttering the active tasks.
+**Completion:** Never delete completed items. Mark them with `- [x]` and move them below the active (unchecked) items under the same subheading, keeping the done items grouped at the bottom. If an entire subheading's tasks are all done, mark the heading itself with `✓` (e.g. `## Hermes LXC SSH Access ✓`). This preserves a visible history of what was done without cluttering the active tasks.
 
 **Logging is optional:** Significant completions can also be recorded in `logs/YYYY-MM-DD.md` for narrative context, but this is not required — the archived checkboxes are sufficient on their own.
 
