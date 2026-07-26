@@ -12,11 +12,11 @@ tags:
 
 - host:
        - [ ] [[immich|Immich]]
-       - [x] Home Assistant
        - [ ] [[hermes_agent|Hermes]]/OpenClaw
        - [ ] [[todo_jellyfin_arr|Jellyfin and Arr stack]]
-       - [x] Crafty Controller
        - [ ] Uptime Kuma
+       - [x] Crafty Controller
+       - [x] Home Assistant
 - setup [[glance|glance]] to show all containers and related information
 - e.g. link to playit.gg for easy configuration of crafty servers
 - increase storage and RAM
