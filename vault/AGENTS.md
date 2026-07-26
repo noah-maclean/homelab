@@ -52,7 +52,7 @@ Write concise, practical Markdown. Use ATX headings (`#`, `##`), fenced code blo
 
 ## Front Matter & Attribution
 
-Every vault note MUST have YAML front matter between `---` delimiters with the following fields:
+Every vault note MUST have YAML front matter between `---` delimiters with the following fields. **Log notes** (`type: log`) only need `date`, `type`, `author`, and `tags` — the `title` field is optional since the heading and filename already identify the date.
 
 ```yaml
 ---
@@ -65,7 +65,7 @@ tags:
 ---
 ```
 
-- **`title`** — human-readable display name. Match the note's `# Heading` or provide a clearer one.
+- **`title`** — human-readable display name. Match the note's `# Heading` or provide a clearer one. **Optional for log notes** (the date serves as the title).
 - **`type`** — note category: `container`, `log`, `todo`, or `goals`. Maps to the directory the note lives in. Used for Dataview filtering.
 - **`author`** — your identifier (`noah`, `hermes`, `claude-code`, etc.). When you create a new note, set `author:` to yourself. When you make substantial edits, **append** your identifier to the `author:` field (e.g. `author: noah` → `author: noah, hermes`) so the provenance chain records every contributor.
 - **`tags`** — topical tags for Obsidian's tag pane and graph view. Repeat the `type:` value as one tag, then add topic-specific tags (e.g. `networking`, `media`, `proxmox`, `ai`).
