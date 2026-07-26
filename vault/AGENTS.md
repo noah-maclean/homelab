@@ -115,3 +115,13 @@ Use **vault-relative paths** — no leading `/`, no `.md` extension:
 - `[[todo/todo_jellyfin_arr]]` ✓
 - `[[/vault/containers/glance.md]]` ✗
 - `[[glance]]` ✗ (ambiguous with potential future notes)
+
+## Change Documentation
+
+Any time you make or learn about a change to a homelab service (container config, software install, infrastructure change, vault restructuring, etc.):
+
+**If you made the change:** document it in a daily log (`logs/YYYY-MM-DD.md`) immediately — before committing or moving on. Use a clear `##` subheading describing what was done.
+
+**If someone tells you about a change:** ask "Would you like me to log this in today's daily note?" before proceeding.
+
+This ensures the vault stays a complete history regardless of which agent (Hermes, Claude Code, Codex CLI, Cursor, etc.) made the change. The daily consistency sync cron job (`job_id: a44601cc0e9d`) can then propagate details into the relevant `containers/` notes automatically.
