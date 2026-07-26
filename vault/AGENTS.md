@@ -12,6 +12,17 @@ This repository is a Markdown knowledge vault for the homelab, not an applicatio
 
 **Logging is optional:** Significant completions can also be recorded in `logs/YYYY-MM-DD.md` for narrative context, but this is not required — the archived checkboxes are sufficient on their own.
 
+### Automated todo reordering
+
+The vault sync cron job (`job_id: a44601cc0e9d`) runs a script (`reorder-todos.py`) on every tick that automatically tidies todo files:
+
+- Within each `##` section, completed `- [x]` items are moved below active `- [ ]` items
+- Fully-completed sections get ✓ on the heading (e.g. `## Backups ✓`)
+- Non-checkbox content and plain list items are left untouched
+- If reordering occurs, it's auto-committed as `chore: reorder todo checkboxes (active before completed)` **before** the sync agent runs
+
+This runs as a no_agent pipeline step — no tokens spent, happens silently.
+
 ## Development and Validation
 
 There is no build system, test suite, or runtime command in this repository. Validate changes before committing by reviewing the rendered Markdown in your editor and checking links, command syntax, and heading hierarchy. Useful checks include:
