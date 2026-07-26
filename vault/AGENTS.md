@@ -4,6 +4,10 @@
 
 This repository is a Markdown knowledge vault for the homelab, not an application. Keep durable service notes in `containers/` (for example, `containers/immich.md`), active implementation work in `todo/`, and chronological updates in `logs/` using the `YYYY-MM-DD.md` filename pattern. Use `goals.md` for longer-term priorities. Store a note in the most specific existing area; create a new top-level area only when the content does not fit these categories.
 
+### Todo note splitting rule
+
+Keep all todo items for a single container in one note, separated by subheadings. Only create a separate todo note when the topic relates to multiple containers (e.g., shared infrastructure, cross-cutting config) or is unrelated to any specific container. Do not split per-container todos into individual files.
+
 ## Development and Validation
 
 There is no build system, test suite, or runtime command in this repository. Validate changes before committing by reviewing the rendered Markdown in your editor and checking links, command syntax, and heading hierarchy. Useful checks include:
