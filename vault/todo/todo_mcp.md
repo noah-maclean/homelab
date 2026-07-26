@@ -12,13 +12,13 @@ tags:
 
 # TODO
 
-- [ ] [[todo/todo_proxmox|Proxmox]] MCP
+- [ ] [[todo_proxmox|Proxmox]] MCP
 - [ ] Crafty Controller MCP
 - [ ] Home Assistant MCP (maybe)
-- [ ] [[containers/hermes_agent|GitHub MCP]] — add @modelcontextprotocol/server-github so Hermes can create PRs, manage issues, review code, and check CI directly
+- [ ] [[hermes_agent|GitHub MCP]] — add @modelcontextprotocol/server-github so Hermes can create PRs, manage issues, review code, and check CI directly
 
 ## Related
 
-- [[containers/hermes_agent]]
-- [[todo/todo_hermes]]
-- [[todo/todo_vault]]
+- [[hermes_agent]]
+- [[todo_hermes]]
+- [[todo_vault]]

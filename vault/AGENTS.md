@@ -113,12 +113,14 @@ Use this for connections that don't have a natural prose anchor (e.g., a contain
 
 ### Path format
 
-Use **vault-relative paths** — no leading `/`, no `.md` extension:
+Use the **shortest unique wikilink** — since every filename in this vault is unique by convention, just use the bare name with no path prefix, no leading `/`, no `.md` extension:
 
-- `[[containers/glance]]` ✓
-- `[[todo/todo_jellyfin_arr]]` ✓
-- `[[/vault/containers/glance.md]]` ✗
-- `[[glance]]` ✗ (ambiguous with potential future notes)
+- `[[glance]]` ✓ — shortest, unique across vault
+- `[[todo_mcp]]` ✓ — no prefix needed
+- `[[hermes_agent]]` ✓ — resolves to `containers/hermes_agent`
+- `[[todo/todo_jellyfin_arr]]` ✗ — redundant prefix on a unique name
+- `[[/vault/containers/glance.md]]` ✗ — absolute path with extension
+- Only add a directory prefix (e.g. `[[containers/hermes_agent]]`) when consulting another agent that doesn't know the vault's naming convention, or if a name collision ever appears.
 
 ## Change Documentation
 
