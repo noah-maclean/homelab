@@ -71,6 +71,8 @@ Treat documentation accuracy as the primary test. Re-read edited commands for qu
 
 Recent history uses timestamped backup commits, such as `vault backup: 2026-07-08 17:16:10`. For manual commits, use a brief imperative summary scoped to the note, such as `docs: update Tailscale route setup`. Keep each commit focused. Pull requests should explain the operational impact, list files or services affected, link any relevant task, and include screenshots only when documenting rendered layout or visual configuration.
 
+**Attribution:** When committing, identify your agent with `git -c user.name="<agent>" -c user.email="<agent>@users.noreply.github.com" commit` so the commit history shows who made the change. Examples: `opencode`, `claude-code`, `cursor`, `hermes`. This is per-command — no config files are modified.
+
 ### Push rule
 
 **Always push immediately after committing** unless the change is a file deletion, a move/rename, or a massive batch change. The default is to commit and push — don't leave changes sitting locally.
