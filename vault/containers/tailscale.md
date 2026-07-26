@@ -44,8 +44,8 @@ sudo tailscale set --advertise-routes=192.168.1.0/24
 
 ## Related
 
-- [[todo/todo_tailscale]]
-- [[todo/todo_reverse_proxy]]
-- [[containers/glance]]
-- [[containers/hermes_agent]]
+- [[todo_tailscale]]
+- [[todo_reverse_proxy]]
+- [[glance]]
+- [[hermes_agent]]
 - [[goals]]

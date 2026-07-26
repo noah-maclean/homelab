@@ -14,29 +14,29 @@ tags:
 
 # Reverse Proxy Setup
 
-Goal: nice domain names instead of IPs. Some services public ([[containers/glance|Glance]], [[todo/todo_jellyfin_arr|Jellyfin]]), most stay on [[containers/tailscale|Tailscale]].
+Goal: nice domain names instead of IPs. Some services public ([[glance|Glance]], [[todo_jellyfin_arr|Jellyfin]]), most stay on [[tailscale|Tailscale]].
 
 ## Two options
 
 ### Option A: Tailscale Funnel (no router config, starts now)
 
-[[todo/todo_jellyfin_arr|Jellyfin]] video goes through [[containers/tailscale|Tailscale]] relay — fine to test, slower for 4K.
+[[todo_jellyfin_arr|Jellyfin]] video goes through [[tailscale|Tailscale]] relay — fine to test, slower for 4K.
 
 ```shell
 # Enable funnel
 sudo tailscale set --funnel
 
 # Expose services publicly at https://<port>.your-tailnet.ts.net
-sudo tailscale funnel --bg 8080   # [[containers/glance|Glance]]
-sudo tailscale funnel --bg 8096   # [[todo/todo_jellyfin_arr|Jellyfin]]
+sudo tailscale funnel --bg 8080   # [[glance|Glance]]
+sudo tailscale funnel --bg 8096   # [[todo_jellyfin_arr|Jellyfin]]
 ```
 
 **Pros:** Zero port forwarding, works now, built-in Tailscale auth.
-**Cons:** *.ts.net URLs, video relayed through [[containers/tailscale|Tailscale]].
+**Cons:** *.ts.net URLs, video relayed through [[tailscale|Tailscale]].
 
 ---
 
-### Option B: Caddy + DuckDNS + Port Forwarding (recommended for [[todo/todo_jellyfin_arr|Jellyfin]])
+### Option B: Caddy + DuckDNS + Port Forwarding (recommended for [[todo_jellyfin_arr|Jellyfin]])
 
 Full control, direct traffic, pretty subdomains. Swap DuckDNS for a real domain later trivially.
 
@@ -116,21 +116,21 @@ Expect `200 OK` with a valid cert.
 
 ### Recommended path
 
-1. **Start with [[containers/tailscale|Tailscale]] Funnel** — 5 min test drive
-2. **Switch to Caddy + DuckDNS** if [[todo/todo_jellyfin_arr|Jellyfin]] streaming feels slow or you want cleaner URLs
+1. **Start with [[tailscale|Tailscale]] Funnel** — 5 min test drive
+2. **Switch to Caddy + DuckDNS** if [[todo_jellyfin_arr|Jellyfin]] streaming feels slow or you want cleaner URLs
 3. **Buy a real domain later** — just point it at the same Caddy config
 
 ### If port forwarding doesn't work
 
 - Some UK ISPs block 80/443 — check yours
 - Your LXC's firewall (ufw) or Proxmox firewall may need port rules
-- Try [[containers/tailscale|Tailscale]] Funnel instead — no ports needed
+- Try [[tailscale|Tailscale]] Funnel instead — no ports needed
 - Or use Cloudflare Tunnel (`cloudflared`) — no open ports, but Jellyfin video violates their ToS on the free plan
 
 ## Related
 
-- [[containers/tailscale]]
-- [[containers/glance]]
-- [[todo/todo_jellyfin_arr]]
-- [[todo/todo_containers]]
+- [[tailscale]]
+- [[glance]]
+- [[todo_jellyfin_arr]]
+- [[todo_containers]]
 - [[goals]]

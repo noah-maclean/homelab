@@ -83,9 +83,9 @@ Every note should use **inline wikilinks** where prose mentions another note, pl
 
 Replace bare mentions of other notes with `[[path/to/note|display text]]`:
 
-- In goal/todo lists: `- [ ] [[containers/immich|Immich]]` instead of `- [ ] Immich`
-- In prose: `most stay on [[containers/tailscale|Tailscale]]` instead of `most stay on Tailscale`
-- In headings: `## [[containers/glance|Glance Dashboard]]`
+- In goal/todo lists: `- [ ] [[immich|Immich]]` instead of `- [ ] Immich`
+- In prose: `most stay on [[tailscale|Tailscale]]` instead of `most stay on Tailscale`
+- In headings: `## [[glance|Glance Dashboard]]`
 - Only link the **first** mention of a note per section to avoid clutter.
 
 ### Related section (broad connections)
@@ -95,8 +95,8 @@ Append after all content, before any trailing blank lines:
 ```markdown
 ## Related
 
-- [[containers/hermes_agent]]
-- [[todo/todo_jellyfin_arr]]
+- [[hermes_agent]]
+- [[todo_jellyfin_arr]]
 - [[goals]]
 ```
 
@@ -118,9 +118,9 @@ Use the **shortest unique wikilink** — since every filename in this vault is u
 - `[[glance]]` ✓ — shortest, unique across vault
 - `[[todo_mcp]]` ✓ — no prefix needed
 - `[[hermes_agent]]` ✓ — resolves to `containers/hermes_agent`
-- `[[todo/todo_jellyfin_arr]]` ✗ — redundant prefix on a unique name
+- `[[todo_jellyfin_arr]]` ✗ — redundant prefix on a unique name
 - `[[/vault/containers/glance.md]]` ✗ — absolute path with extension
-- Only add a directory prefix (e.g. `[[containers/hermes_agent]]`) when consulting another agent that doesn't know the vault's naming convention, or if a name collision ever appears.
+- Only add a directory prefix (e.g. `[[hermes_agent]]`) when consulting another agent that doesn't know the vault's naming convention, or if a name collision ever appears.
 
 ## Change Documentation
 

@@ -26,10 +26,10 @@ tags:
 
 ## Related
 
-- [[todo/todo_glance]]
-- [[todo/todo_jellyfin_arr]]
-- [[todo/todo_reverse_proxy]]
-- [[containers/tailscale]]
-- [[containers/hermes_agent]]
-- [[containers/immich]]
+- [[todo_glance]]
+- [[todo_jellyfin_arr]]
+- [[todo_reverse_proxy]]
+- [[tailscale]]
+- [[hermes_agent]]
+- [[immich]]
 - [[goals]]

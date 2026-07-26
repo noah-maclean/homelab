@@ -11,12 +11,12 @@ tags:
 
 # TODO
 
-- [[containers/immich|immich]]
-- [[todo/todo_jellyfin_arr|jellyfin + arr stack]]
+- [[immich|immich]]
+- [[todo_jellyfin_arr|jellyfin + arr stack]]
 - uptime kuma
 - try openclaw as well?
 - uptime kuma
-- [[todo/todo_reverse_proxy|nginx proxy manager or caddy]]
+- [[todo_reverse_proxy|nginx proxy manager or caddy]]
 
 ## Open Notebook
 
@@ -34,7 +34,7 @@ tags:
 
 ## Related
 
-- [[containers/immich]]
-- [[todo/todo_jellyfin_arr]]
-- [[todo/todo_reverse_proxy]]
+- [[immich]]
+- [[todo_jellyfin_arr]]
+- [[todo_reverse_proxy]]
 - [[goals]]

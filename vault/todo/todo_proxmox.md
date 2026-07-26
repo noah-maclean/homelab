@@ -80,7 +80,7 @@ Backups           -> separate PBS host or rotated/off-site backup disk
 
 ## Related
 
-- [[containers/immich]]
-- [[todo/todo_jellyfin_arr]]
-- [[todo/todo_containers]]
+- [[immich]]
+- [[todo_jellyfin_arr]]
+- [[todo_containers]]
 - [[goals]]

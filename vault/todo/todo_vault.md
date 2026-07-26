@@ -14,10 +14,10 @@ tags:
 
 - [ ] check front matters
 - [ ] enable nvim front matter creation
-- [ ] enable [[todo/todo_mcp|proxmox mcp]] to check status of containers and update tags based on that
+- [ ] enable [[todo_mcp|proxmox mcp]] to check status of containers and update tags based on that
 
 ## Related
 
-- [[containers/hermes_agent]]
-- [[todo/todo_mcp]]
-- [[todo/todo_hermes]]
+- [[hermes_agent]]
+- [[todo_mcp]]
+- [[todo_hermes]]

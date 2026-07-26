@@ -13,7 +13,7 @@ tags:
 
 ## Related
 
-- [[todo/todo_containers]]
-- [[todo/todo_glance]]
-- [[todo/todo_proxmox]]
+- [[todo_containers]]
+- [[todo_glance]]
+- [[todo_proxmox]]
 - [[goals]]

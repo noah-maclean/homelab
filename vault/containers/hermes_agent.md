@@ -18,8 +18,8 @@ tags:
 
 ## Related
 
-- [[todo/todo_hermes]]
-- [[todo/todo_mcp]]
-- [[todo/todo_vault]]
-- [[containers/glance]]
-- [[containers/tailscale]]
+- [[todo_hermes]]
+- [[todo_mcp]]
+- [[todo_vault]]
+- [[glance]]
+- [[tailscale]]

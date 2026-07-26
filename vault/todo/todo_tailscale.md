@@ -19,6 +19,6 @@ tags:
 
 ## Related
 
-- [[containers/tailscale]]
-- [[todo/todo_reverse_proxy]]
+- [[tailscale]]
+- [[todo_reverse_proxy]]
 - [[goals]]
