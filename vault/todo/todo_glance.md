@@ -12,7 +12,7 @@ tags:
 
 # TODO
 
-- [ ] create separate pages/columns for rasppi and [[todo/todo_proxmox_storage|proxmox]]
+- [ ] create separate pages/columns for rasppi and [[todo/todo_proxmox|proxmox]]
 - [ ] run [glance agent](https://github.com/glanceapp/agent) on rasppi to show server stats
 - [ ] add widgets from [community-widgets](https://github.com/glanceapp/community-widgets)
 - [ ] [[containers/tailscale|tailscale]] devices

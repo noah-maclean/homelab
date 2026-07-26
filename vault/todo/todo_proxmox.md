@@ -1,6 +1,7 @@
 ---
-title: Proxmox Storage and Resilience
+title: Proxmox TODO
 created: 2026-06-16
+updated: 2026-07-26
 type: todo
 author: noah
 tags:
@@ -10,7 +11,7 @@ tags:
   - backup
 ---
 
-# Proxmox Storage and Resilience
+# TODO
 
 ## Current Host Layout
 

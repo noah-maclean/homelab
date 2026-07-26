@@ -15,5 +15,5 @@ tags:
 
 - [[todo/todo_containers]]
 - [[todo/todo_glance]]
-- [[todo/todo_proxmox_storage]]
+- [[todo/todo_proxmox]]
 - [[goals]]

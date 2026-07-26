@@ -201,7 +201,7 @@ Add widgets after setup:
 ## Related
 
 - [[containers/glance]]
-- [[todo/todo_proxmox_storage]]
+- [[todo/todo_proxmox]]
 - [[todo/todo_reverse_proxy]]
 - [[todo/todo_containers]]
 - [[goals]]

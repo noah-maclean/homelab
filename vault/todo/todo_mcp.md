@@ -11,7 +11,7 @@ tags:
 
 # TODO
 
-- [ ] [[todo/todo_proxmox_storage|Proxmox]] MCP
+- [ ] [[todo/todo_proxmox|Proxmox]] MCP
 - [ ] Crafty Controller MCP
 - [ ] Home Assistant MCP (maybe)
 

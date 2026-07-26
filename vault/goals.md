@@ -34,4 +34,4 @@ tags:
 - [[todo/todo_jellyfin_arr]]
 - [[todo/todo_containers]]
 - [[todo/todo_reverse_proxy]]
-- [[todo/todo_proxmox_storage]]
+- [[todo/todo_proxmox]]
