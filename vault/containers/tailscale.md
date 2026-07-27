@@ -2,7 +2,7 @@
 title: Tailscale LXC
 status: running
 type: container
-author: noah
+author: noah, hermes
 tags:
   - container
   - networking
@@ -42,7 +42,30 @@ sudo tailscale set --advertise-routes=192.168.1.0/24
 
 - now, each container can be accessed using their local IP (192.168.1.xx)
 
-## Pitfalls
+## Subnet Routing — How It Works
+
+Two separate Tailscale features that work together:
+
+| Feature | Used by | What it does |
+|---|---|---|
+| `--advertise-routes=192.168.1.0/24` | **Tailscale LXC** (the subnet router) | "I can be the gateway to the `192.168.1.x` LAN — route traffic for those IPs through me." |
+| `--accept-routes` | **Remote devices** (Mac, phone, etc.) | "If another node advertises routes, I'll use them to reach those networks." |
+
+**The flow when you're away from home:**
+
+```text
+   Your Mac (coffee shop)          Tailscale LXC (at home)            Hermes (at home)
+   --accept-routes ✅              --advertise-routes ✅              --accept-routes ❌
+         │                                  │                               │
+         │  I want to reach 192.168.1.23    │                               │
+         │──────────────────────────────►   │                               │
+         │                                  │── forwards to 192.168.1.23──►│
+         │◄─── response via tunnel ─────────│◄──────────────────────────────│
+```
+
+- **Your Mac** has `--accept-routes` → it knows to send `192.168.1.x` traffic through the Tailscale LXC subnet router. This is correct.
+- **Tailscale LXC** has `--advertise-routes` → it tells the tailnet "I can reach the LAN". This is correct.
+- **Other nodes on the LAN** (Hermes, Pi, etc.) **should NOT** have `--accept-routes` — they don't need to route through anyone else to reach their own LAN. If enabled, the `192.168.1.0/24` route gets added to their table, and LAN responses go through `tailscale0` instead of `eth0`, breaking local access.
 
 ### `--accept-routes` breaks LAN access to tailnet members
 
