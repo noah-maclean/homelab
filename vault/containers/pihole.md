@@ -66,3 +66,12 @@ Tailscale's MagicDNS relay (`100.100.100.100`) forwards queries to the Pi-hole. 
 - [[tailscale]]
 - [[todo_containers]]
 - [[goals]]
+
+### macOS Tailscale quirk
+
+The Tailscale network extension on macOS (`systemextensionsctl`) persists across reboots and intercepts traffic to any known tailnet peer, even when the Tailscale app is quit. This means:
+
+- `ssh user@192.168.1.23` (LAN IP) may hang if Hermes is a tailnet member
+- `ssh user@100.94.37.116` (Tailscale IP) always works when Tailscale is on
+
+If you need LAN IP access without Tailscale: `sudo systemextensionsctl deactivate W5364U7YZB io.tailscale.ipn.macsys.network-extension`
