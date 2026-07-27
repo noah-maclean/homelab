@@ -25,6 +25,17 @@ Pi-hole is joined to the tailnet as `rasppi` (`100.75.28.2`). DNS queries from a
 - **"Use with exit node"**: ✅ ticked (so ad-blocking persists when routing through an exit node)
 - **Override local DNS**: ✅ ticked
 
+### Upstream DNS
+
+Upstream DNS providers set in Pi-hole web UI:
+
+| Provider | Notes |
+|---|---|
+| **Quad9 (filtered, DNSSEC)** — `9.9.9.9` | Primary. Blocks malware + DNSSEC validation |
+| **Cloudflare (DNSSEC)** — `1.1.1.2` | Secondary. DNSSEC validated, malware-blocking variant |
+
+Previously used Google DNS (`8.8.8.8`). Switched to Quad9 + Cloudflare for better privacy and malware filtering.
+
 ### Config (Pi-hole web UI, v6.6.1)
 
 - Under **Settings → All Settings → DNS**, set **Interface listening behavior** to **Permit all origins**.
