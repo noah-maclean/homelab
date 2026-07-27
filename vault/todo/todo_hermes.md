@@ -19,11 +19,11 @@ tags:
 
 ## Hermes LXC SSH Access
 
-- [x] (Done) Set password for `hermes` user and add to `sudo` group — SSH + sudo access enabled for remote TUI use
 - [ ] Generate SSH key pair for Hermes and add public key to Proxmox host's `~/.ssh/authorized_keys`
 - [ ] Verify Hermes can SSH into the Proxmox host from its LXC
 - [ ] Use `pct enter <CTID>` via the host to manage containers without per-container SSH setup
 - [ ] (Optional) If direct SSH into containers is preferred later: install openssh-server, create a non-root user, and add Hermes SSH key per container
+- [x] (Done) Set password for `hermes` user and add to `sudo` group — SSH + sudo access enabled for remote TUI use
 
 Notes:
 

@@ -15,8 +15,8 @@ id: todo_vault
 # TODO
 
 - [ ] check front matters
-- [x] enable nvim front matter creation
 - [ ] enable [[todo_mcp|proxmox mcp]] to check status of containers and update tags based on that
+- [x] enable nvim front matter creation
 
 ## CI/CD pipeline
 
