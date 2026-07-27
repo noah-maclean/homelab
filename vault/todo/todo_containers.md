@@ -18,6 +18,13 @@ tags:
 - uptime kuma
 - [[todo_reverse_proxy|nginx proxy manager or caddy]]
 
+## Pi-hole (Raspberry Pi 3B) ✓
+
+- [x] Join Pi-hole Pi to tailnet
+- [x] Set as Tailscale global nameserver
+- [x] Enable "Use with exit node" for off-network ad-blocking
+- [x] Set Pi-hole to "Permit all origins" (fixes dnsmasq blocking Tailscale DNS queries)
+
 ## Open Notebook
 
 - **Project:** [lfnovo/open-notebook](https://github.com/lfnovo/open-notebook) — 36k ⭐, MIT
