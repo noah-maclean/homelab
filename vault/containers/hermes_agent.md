@@ -35,6 +35,7 @@ tags:
 ### 2026-07-27 — Desktop App & Vision Model
 
 - **Desktop app**: Set up the Hermes Desktop app on Mac (Noah's daily-driver machine). Connected to the remote Hermes LXC instance — the desktop app runs locally on Mac and talks to the remote Hermes backend over the network, giving a native chat GUI instead of terminal-only access.
+- **Raycast launcher**: Created a Raycast script command at `~/.config/raycast/scripts/hermes.sh` that runs `hermes desktop` to bypass the app's first-run provisioning reinstall issue. Launches straight into the remote backend session from Raycast/Spotlight.
 - **Vision model**: Configured the vision provider to use the Google AI Studio free API key. The vision model is set to `gemini-flash-latest` (dynamic alias that currently resolves to **Gemini 3.6 Flash**). This keeps vision fully on the free tier with no risk of charges — the free tier covers input, output, and vision at no cost with rate limits (10+ RPM / 250+ RPD) that are more than sufficient for occasional image analysis use.
 
 ### 2026-07-26 — Tailscale `--accept-routes` Fix
