@@ -42,6 +42,16 @@ sudo tailscale set --advertise-routes=192.168.1.0/24
 
 - now, each container can be accessed using their local IP (192.168.1.xx)
 
+## Pitfalls
+
+### `--accept-routes` breaks LAN access to tailnet members
+
+Other containers on the LAN with Tailscale installed **must not** have `--accept-routes` enabled. If they do, they'll accept the `192.168.1.0/24` subnet route into Tailscale's table 52, routing LAN responses through `tailscale0` instead of `eth0`. This makes them unreachable via their LAN IP from other containers.
+
+- **Symptoms**: SSH/pings to the container's LAN IP hang from other LAN devices, but work via Tailscale IP
+- **Fix**: `sudo tailscale set --accept-routes=false` on the affected node
+- **The Tailscale LXC** advertises the route; **no other device** should accept it
+
 ## Related
 
 - [[todo_tailscale]]
