@@ -64,6 +64,7 @@ Tailscale's MagicDNS relay (`100.100.100.100`) forwards queries to the Pi-hole. 
 ## Related
 
 - [[tailscale]]
+- [[todo_tailscale]]
 - [[todo_containers]]
 - [[goals]]
 

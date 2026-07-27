@@ -30,6 +30,7 @@ tags:
 - [[tailscale]]
 - [[glance]]
 - [[immich]]
+- [[pihole]]
 - [[todo_jellyfin_arr]]
 - [[todo_containers]]
 - [[todo_reverse_proxy]]
