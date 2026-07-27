@@ -145,6 +145,33 @@ This gives you: auto-deploy on push → authentication required → only specifi
 - [ ] Decide: public vs authenticated vs fully private
 - [ ] If going ahead: create Quartz repo, configure `ExplicitPublish`, deploy to Cloudflare Pages, add Cloudflare Access
 
+## Compounding wiki (Karpathy-style)
+
+Add LLM-maintained cross-cutting pages that surface relationships between services, architecture decisions, and accumulated knowledge:
+
+### Cross-cutting concept pages (`concepts/`)
+
+- [ ] Create `concepts/network_topology.md` — auto-maintained map of which services talk to which, DNS chain, subnet routes, Tailscale flow
+- [ ] Create `concepts/storage_strategy.md` — mergerfs + ZFS migration plan, bind mounts, share layouts
+- [ ] Create `concepts/backup_strategy.md` — what backs up what, frequency, restoration procedure
+- [ ] Add `concepts/` to AGENTS.md: naming, frontmatter (`type: concept`), minimum 3 outbound `[[wikilinks]]`
+
+### Service comparison pages (`comparisons/`)
+
+- [ ] Create `comparisons/reverse_proxies.md` — Nginx vs Caddy vs Traefik, config style, TLS automation
+- [ ] Create `comparisons/media_servers.md` — Jellyfin vs Plex vs Emby
+- [ ] Create `comparisons/automation_tools.md` — Home Assistant vs Node-RED vs custom scripts
+
+### Richer container pages
+
+- [ ] Add a `## Dependencies` section to each container note (e.g., Pi-hole depends on Tailscale DNS, Jellyfin depends on NFS storage)
+- [ ] Auto-maintain dependencies: when a container's note is updated, cross-check all `[[wikilinks]]` for reciprocal links back
+
+### Auto-lint
+
+- [ ] Schedule a weekly lint: services with stale status, paragraphs referencing concepts that need a page, orphan pages with no inbound links, missing reciprocal wikilinks
+- [ ] Add lint instructions to AGENTS.md: run weekly, surface 3 highest-priority issues
+
 ## Related
 
 - [[hermes_agent]]
