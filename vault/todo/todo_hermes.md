@@ -17,19 +17,35 @@ tags:
 - [ ] opencode go to try different models
 - [ ] customise web dashboard
 
-## Hermes LXC SSH Access
+## Remote Access
 
-- [ ] Generate SSH key pair for Hermes and add public key to Proxmox host's `~/.ssh/authorized_keys`
-- [ ] Verify Hermes can SSH into the Proxmox host from its LXC
-- [ ] Use `pct enter <CTID>` via the host to manage containers without per-container SSH setup
-- [ ] (Optional) If direct SSH into containers is preferred later: install openssh-server, create a non-root user, and add Hermes SSH key per container
+**LAN IP:** `192.168.1.23` — reachable from anywhere via the [[tailscale|Tailscale]] subnet router (no Tailscale IP needed on your device, your Mac/phone just needs Tailscale connected for the routing to work).
+
+| Tool | Mac | Phone (Termius) |
+|------|-----|-----------------|
+| **SSH** | `ssh hermes@192.168.1.23 -t herdr` | Host `192.168.1.23`, user `hermes`, start cmd `herdr` |
+| **Mosh** (roaming) | `mosh hermes@192.168.1.23 -- herdr` | Termius → protocol MOSH if available |
+| **Web Dashboard** | `http://192.168.1.23:9119` in browser | Same URL in phone browser |
+| **Discord** | Already connected — no IP needed | Already connected — no IP needed |
+
+All use `192.168.1.23` — the subnet router on the Tailscale LXC routes traffic to the LAN from anywhere.
+
+**Zsh alias for Mac:**
+
+```zsh
+alias hermes-lxc='mosh hermes@192.168.1.23 -- herdr'
+```
+
+### herdr (replaces tmux)
+
+Herdr 0.7.5 is installed on the LXC with the Hermes integration plugin. Launch with `herdr` after connecting — auto-attaches to your existing session. Detach with `Ctrl+Q`.
+
+## Hermes LXC SSH Access ✓
+
 - [x] (Done) Set password for `hermes` user and add to `sudo` group — SSH + sudo access enabled for remote TUI use
-
-Notes:
-
-- Community-script LXCs typically only have root with auto console login and no SSH running
-- Preferred approach: SSH into the Proxmox host, then `pct enter <CTID>` — no setup needed per container, survives container rebuilds
-- Alternative: direct SSH per container requires installing openssh-server and adding SSH keys to each one
+- [x] (Done) Access via LAN IP `192.168.1.23` — subnet router handles remote connections
+- [x] (Done) Mosh 1.4.0 installed for roaming sessions (UDP, survives network switches)
+- [x] (Done) herdr 0.7.5 installed — replaces tmux for persistent agent workspaces
 
 ## Related
 
