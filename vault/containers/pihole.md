@@ -31,10 +31,12 @@ Upstream DNS providers set in Pi-hole web UI:
 
 | Provider | Notes |
 |---|---|
-| **Quad9 (filtered, DNSSEC)** — `9.9.9.9` | Primary. Blocks malware + DNSSEC validation |
-| **Cloudflare (DNSSEC)** — `1.1.1.2` | Secondary. DNSSEC validated, malware-blocking variant |
+| **Quad9 (filtered, DNSSEC)** — `9.9.9.9` | Primary (preset, IPv4 only). Blocks malware + DNSSEC validation |
+| **Cloudflare (malware-blocking, DNSSEC)** — `1.1.1.2` | Secondary (custom entry, IPv4 only). DNSSEC validated |
 
 Previously used Google DNS (`8.8.8.8`). Switched to Quad9 + Cloudflare for better privacy and malware filtering.
+
+**IPv6 upstreams removed** — Pi's IPv6 connectivity to the internet is unreliable. Unticked Quad9 (`2620:fe::fe`) and Cloudflare (`2606:4700:4700::1001`) IPv6 upstreams to eliminate `Network unreachable` connection errors. (Pi retains its own IPv6 address for local SLAAC — just not used for outbound DNS.)
 
 ### Config (Pi-hole web UI, v6.6.1)
 
