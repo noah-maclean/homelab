@@ -1,0 +1,24 @@
+---
+title: Tailscale TODO
+created: 2026-06-16
+type: todo
+author: noah
+tags:
+  - todo
+  - tailscale
+  - networking
+---
+
+# TODO
+
+- [x] setup rasppi as exit node to block ads anywhere
+    - [block ads on all devices from anywhere](https://tailscale.com/docs/solutions/block-ads-all-devices-anywhere-using-raspberry-pi)
+    - set pi as dns server for tailnet
+    - DNS -> Nameservers -> Add nameserver -> Custom -> rasppi tailscale IP
+    - Enable Override DNS servers
+
+## Related
+
+- [[tailscale]]
+- [[todo_reverse_proxy]]
+- [[goals]]
