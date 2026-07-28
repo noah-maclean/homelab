@@ -30,6 +30,16 @@ tags:
 - `--accept-routes=false` (explicitly set) — otherwise the Tailscale LXC's advertised `192.168.1.0/24` subnet route would be accepted into table 52, routing LAN responses through `tailscale0` instead of `eth0` and breaking local LAN access to Hermes from other containers
 - Also set `tailscale set --operator=$USER` so CLI commands don't need `sudo`
 
+## herdr
+
+Herdr 0.7.5 is installed on the LXC as the agent session manager (replaces tmux):
+
+- **Install**: `curl -fsSL https://herdr.dev/install.sh | sh` into `~/.local/bin/herdr`
+- **Integration**: `herdr integration install hermes` enabled the v3 lifecycle plugin at `~/.hermes/plugins/herdr-agent-state/` — gives herdr proper idle/working/blocked state tracking and session management
+- **PATH**: `~/.local/bin` added to `~/.bashrc` above the interactive guard so herdr panes can find both `hermes` and `herdr`
+- **Dashboard**: runs on port 9119 (PID 2808)
+- **Launch**: connect via SSH/Mosh then run `herdr` — auto-attaches to existing session. Detach with `Ctrl+Q`.
+
 ## Changes
 
 ### 2026-07-27 — Desktop App & Vision Model
