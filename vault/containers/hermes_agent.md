@@ -42,6 +42,14 @@ Herdr 0.7.5 is installed on the LXC as the agent session manager (replaces tmux)
 
 ## Changes
 
+### 2026-08-01 — SOUL.md
+
+- Replaced the default Hermes identity (`~/.hermes/SOUL.md`) with a custom soul adapted from Noah's "Robespierre" template — default backed up to `~/.hermes/SOUL.md.bak.20260801_*`
+- New soul covers: role (Hermes in Proxmox LXC 2C/4GB/20GB, user is Noah), tone (brief, direct, lead with the answer, stop at decisions/errors), and compaction behaviour
+- Added clause: all server information lives in the homelab vault (`~/homelab`) — hardware, services, configs, changes, todos — and service/config changes get documented in the daily log
+- Added clause (amended same day): always ask for clarification when needed — if something cannot be done, or documentation Noah should know the location of cannot be found, ask instead of guessing
+- Takes effect from the next session (SOUL.md loads at session start)
+
 ### 2026-07-27 — Desktop App & Vision Model
 
 - **Desktop app**: Set up the Hermes Desktop app on Mac (Noah's daily-driver machine). Connected to the remote Hermes LXC instance — the desktop app runs locally on Mac and talks to the remote Hermes backend over the network, giving a native chat GUI instead of terminal-only access.
