@@ -1,9 +1,9 @@
 ---
 title: Hermes Agent TODO
 created: 2026-06-20
-updated: 2026-07-26
+updated: 2026-08-06
 type: todo
-author: noah
+author: noah, hermes
 tags:
   - todo
   - hermes
@@ -46,6 +46,10 @@ Herdr 0.7.5 is installed on the LXC with the Hermes integration plugin. Launch w
 - [x] (Done) Access via LAN IP `192.168.1.23` — subnet router handles remote connections
 - [x] (Done) Mosh 1.4.0 installed for roaming sessions (UDP, survives network switches)
 - [x] (Done) herdr 0.7.5 installed — replaces tmux for persistent agent workspaces
+
+## Discord Voice — First-Utterance Hallucination
+
+- [ ] **Debug first-utterance-after-join hallucination** (parked 2026-08-06). First voice utterance after each VC join still transcribes as garbage — e.g. *"I'm going to go to the next one."* — while all follow-ups are clean. Cause: socket warm-up audio has energy, not silence, so the v3 silence-trim doesn't catch it; Whisper hallucinates filler over the junk. Next steps: add a hook to save the first utterance's raw PCM/WAV to disk, say one test phrase, inspect the waveform, then likely require sustained speech (not a single noise spike) before treating audio as an utterance. See [[2026-08-05|08-05 log]] for the full patch history (v1 phrase filter + v3 silence trim, both still live; v2 drop hack removed). Local patches in `tools/voice_mode.py` + `plugins/platforms/discord/adapter.py` must be re-applied after `hermes update`.
 
 ## Related
 
