@@ -42,6 +42,12 @@ Herdr 0.7.5 is installed on the LXC as the agent session manager (replaces tmux)
 
 ## Changes
 
+### 2026-08-05 — Discord Voice: acks + ambient bed
+
+- Enabled `discord.voice_fx` (Discord-only): `enabled: true`, `ack_enabled: true` — bot speaks a canned phrase ("Let me look into that.") before tool calls during VC conversations, plus a low-volume ambient "thinking" bed while tools run
+- Reason: bot previously only spoke the final reply; tool-call work was silent in VC
+- Needs gateway restart + VC re-join to take effect; see [[2026-08-05|log entry]]
+
 ### 2026-08-01 — SOUL.md
 
 - Replaced the default Hermes identity (`~/.hermes/SOUL.md`) with a custom soul adapted from the "Robespierre" template — default backed up to `~/.hermes/SOUL.md.bak.20260801_*`
