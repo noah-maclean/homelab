@@ -44,15 +44,15 @@ Herdr 0.7.5 is installed on the LXC as the agent session manager (replaces tmux)
 
 ### 2026-08-01 — SOUL.md
 
-- Replaced the default Hermes identity (`~/.hermes/SOUL.md`) with a custom soul adapted from Noah's "Robespierre" template — default backed up to `~/.hermes/SOUL.md.bak.20260801_*`
-- New soul covers: role (Hermes in Proxmox LXC 2C/4GB/20GB, user is Noah), tone (brief, direct, lead with the answer, stop at decisions/errors), and compaction behaviour
+- Replaced the default Hermes identity (`~/.hermes/SOUL.md`) with a custom soul adapted from the "Robespierre" template — default backed up to `~/.hermes/SOUL.md.bak.20260801_*`
+- New soul covers: role (Hermes in Proxmox LXC 2C/4GB/20GB, user is the homelab owner), tone (brief, direct, lead with the answer, stop at decisions/errors), and compaction behaviour
 - Added clause: all server information lives in the homelab vault (`~/homelab`) — hardware, services, configs, changes, todos — and service/config changes get documented in the daily log
-- Added clause (amended same day): always ask for clarification when needed — if something cannot be done, or documentation Noah should know the location of cannot be found, ask instead of guessing
+- Added clause (amended same day): always ask for clarification when needed — if something cannot be done, or documentation the user should know the location of cannot be found, ask instead of guessing
 - Takes effect from the next session (SOUL.md loads at session start)
 
 ### 2026-07-27 — Desktop App & Vision Model
 
-- **Desktop app**: Set up the Hermes Desktop app on Mac (Noah's daily-driver machine). Connected to the remote Hermes LXC instance — the desktop app runs locally on Mac and talks to the remote Hermes backend over the network, giving a native chat GUI instead of terminal-only access.
+- **Desktop app**: Set up the Hermes Desktop app on Mac (the daily-driver machine). Connected to the remote Hermes LXC instance — the desktop app runs locally on Mac and talks to the remote Hermes backend over the network, giving a native chat GUI instead of terminal-only access.
 - **Raycast launcher**: Created a Raycast script command at `~/.config/raycast/scripts/hermes.sh` that runs `hermes desktop` to bypass the app's first-run provisioning reinstall issue. Launches straight into the remote backend session from Raycast/Spotlight.
 - **Vision model**: Configured the vision provider to use the Google AI Studio free API key. The vision model is set to `gemini-flash-latest` (dynamic alias that currently resolves to **Gemini 3.6 Flash**). This keeps vision fully on the free tier with no risk of charges — the free tier covers input, output, and vision at no cost with rate limits (10+ RPM / 250+ RPD) that are more than sufficient for occasional image analysis use.
 

@@ -46,6 +46,10 @@ npx markdownlint-cli2 --fix "vault/**/*.md"
 
 Run this before every commit. This keeps the entire vault consistently formatted regardless of which tool wrote the file.
 
+## Anonymity
+
+The vault is a personal knowledge base, not a blog. Never refer to the user by name in prose — use passive voice or neutral phrasing instead (e.g. "Created a Groq account", "grab the key from console.groq.com"). The `author:` frontmatter identifier is the only place the user's name (`noah`) appears; keep it there and nowhere else in note bodies.
+
 ## Writing Style & Naming
 
 Write concise, practical Markdown. Use ATX headings (`#`, `##`), fenced code blocks with a language such as `shell`, and `-` for lists. Preserve the local style of the note being edited, including its indentation. Prefer short, descriptive lowercase filenames with underscores for topical notes (for example, `todo_jellyfin_arr.md`); use ISO dates for logs. Keep commands copyable, include required context such as IPs or prerequisites, and clearly label secrets or values that must not be committed.
