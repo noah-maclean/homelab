@@ -60,6 +60,14 @@ Herdr 0.7.5 is installed on the LXC as the agent session manager (replaces tmux)
 
 - See [[2026-07-27|log entry for 2026-07-27]] for details.
 
+### 2026-07-18 — Update Checker Cron
+
+- Daily cron job (`f4ae53358894`) checks for Hermes Agent updates at 10:00 and delivers a summary to the Discord `#updates` channel — see [[2026-07-18|log entry for 2026-07-18]]
+- Script: `~/.hermes/scripts/hermes-update-check.py`; originally `no_agent=True` (zero tokens per tick)
+- Notifies **once per release** via state file `~/.hermes/scripts/.hermes-update-state.json`, not daily
+- Upgraded to **agent mode**: the script collects structured release data; the cron agent adds an ⚠️ **Impact on you** section covering breaking changes affecting `config.yaml`/`.env`/skills, Discord/Telegram interaction changes, relevant new features, and anything needed before `hermes update`
+- Silence preserved on quiet days via the cron `[SILENT]` marker
+
 ## Related
 
 - [[todo_hermes]]
