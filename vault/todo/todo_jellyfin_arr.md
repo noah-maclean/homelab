@@ -11,104 +11,93 @@ tags:
 ---
 # Jellyfin + Arr Stack
 
-## Decision: Two LXCs — Jellyfin native + Arr stack in Docker
+## Decision: One VM running the complete Docker stack
 
 Research and decision (Aug 2026):
 
-- **Docker-in-LXC vs Docker-in-VM** — both work; Proxmox's own docs recommend a VM for maximum isolation, but LXC is the mainstream homelab choice: ~100 MB RAM overhead vs ~1–2 GB for a VM, instant boot, and Intel iGPU (QSV) can be shared across multiple LXCs. With 24 GB total RAM on the host, LXC wins on density. A VM stays the fallback if live migration or stronger isolation is ever needed.
-- **Unprivileged LXC + Docker is fine on PVE 9** — the old runc 1.2+ sysctl breakage (`net.ipv4.ip_unprivileged_port_start` permission denied) was a PVE 8-era problem. PVE 9 (Debian 13 kernel, LXC 6.0 profiles, newer runc/containerd) fixed it, so there is no need for a privileged LXC (where container root = host root). The community-scripts Docker installer creates an unprivileged LXC by default.
-- **Split vs combined** — the \*arr suite belongs in ONE Docker compose: Sonarr/Radarr/Prowlarr/qBittorrent talk constantly, share UIDs on media folders, and one compose file pins versions. Jellyfin gets its own **native** LXC (no Docker): transcoding can't starve the download stack, media serving stays up during arr-stack maintenance, and it has a separate backup boundary.
+- **Docker-in-LXC vs Docker-in-VM** — both can work, but Proxmox recommends a VM for application containers such as Docker. A VM avoids LXC-specific AppArmor, cgroup, UID-mapping, and nested-namespace issues and is the simplest long-term setup. The extra memory overhead is acceptable for this host.
+- **Unprivileged LXC + Docker is not categorically broken**, but it needs more careful configuration and can encounter compatibility problems after kernel, Proxmox, Docker, or `runc` upgrades. Rootless Docker also has limitations that make the Gluetun/qBittorrent VPN arrangement less attractive.
+- **One Compose project** — Jellyfin and the \*arr services share one Docker Compose project. They use consistent paths and permissions, and the whole stack can be backed up or moved together.
+- **LXC remains a fallback** — if memory becomes tight, an unprivileged LXC can still host the stack, but it is no longer the recommended first implementation.
 
 ## Specs
 
-### LXC A — Jellyfin (community-scripts installer)
+### Docker VM
 
-- Type: Unprivileged LXC, native Jellyfin install (no Docker)
-- Install: `bash -c "$(curl -fsSL https://raw.githubusercontent.com/community-scripts/ProxmoxVE/main/ct/jellyfin.sh)"`
-- Defaults: 2 cores / 2048 MB RAM / 8 GB disk (adjust at prompt)
-- OS: Debian 13 (Trixie)
-- Port: 8096
-- GPU transcoding can be added later via `/dev/dri` passthrough (Intel QSV)
-
-### LXC B — Arr stack (community-scripts Docker installer)
-
-- Type: Unprivileged LXC with Docker Engine + Compose
-- Install: `bash -c "$(curl -fsSL https://raw.githubusercontent.com/community-scripts/ProxmoxVE/main/ct/docker.sh)"`
-- Defaults: 2 cores / 2048 MB RAM / 4 GB disk — bump to **4 cores / 4096 MB / 32 GB** at the prompt
-- OS: Debian 13 (Trixie)
-- Features: `nesting=1, keyctl=1, fuse=1` (set by the script)
+- Type: Debian or Ubuntu Server VM with Docker Engine + Compose
+- Resources: **4 cores / 4096–6144 MB RAM / 32 GB system disk**
+- GPU transcoding can be added later by passing `/dev/dri` through to the VM (Intel QSV)
 - Config: `/opt/docker/` with one compose file
 
 ## Storage Mounts
 
-Run on the Proxmox host shell (adjust IDs):
+Unlike an LXC, a VM cannot directly use `pct set -mp0` bind mounts. Mount the storage inside the guest instead. The simplest choice is to export `/mnt/storage` from a storage server/NAS using NFS and mount it once in the VM, or attach the storage disk directly to the VM. Keeping media and downloads under one mount preserves hardlinks and atomic moves.
+
+Example NFS mounts inside the VM:
 
 ```shell
-pct set <JELLYFIN_ID> -mp0 /mnt/storage/media,mp=/mnt/media,ro=1
-pct set <ARR_ID> -mp0 /mnt/storage/media,mp=/mnt/media
-pct set <ARR_ID> -mp1 /mnt/storage/downloads,mp=/mnt/downloads
+sudo mkdir -p /mnt/data
+sudo mount -t nfs <STORAGE_HOST>:/mnt/storage /mnt/data
 ```
 
-Jellyfin gets media **read-only**; the arr stack owns downloads and writes into media.
+Add the mounts to `/etc/fstab` after testing. Jellyfin gets media **read-only** in Docker; the arr services own downloads and write into media.
 
-Fix ownership for unprivileged bind mounts (host side, real root — never container root):
+Use shared UID/GID values for the Docker containers, and ensure the NFS export grants that user/group access. There is no `101000` LXC UID translation in a VM.
 
 ```shell
-chown -R 101000:101000 /mnt/storage/media /mnt/storage/downloads
-chmod -R 775 /mnt/storage/media /mnt/storage/downloads
+PUID=1000
+PGID=1000
 ```
-
-`101000` maps to container UID 1000 (default subuid base 100000 + 1000), matching `PUID=1000`/`PGID=1000` for the Docker containers and keeping media world-readable for the Jellyfin service user.
 
 ## Stack Overview
 
-### Jellyfin (LXC A)
+### Jellyfin (Docker VM)
 
 - Media server — streams movies, TV, and music to any device
-- Config: `/etc/jellyfin` (script default)
-- Media: `/mnt/media` (read-only bind mount)
+- Config: `/opt/docker/jellyfin`
+- Media: `/data/media` (read-only Docker volume mount)
 
-### VPN Gateway (LXC B)
+### VPN Gateway (Docker VM)
 
 - **Gluetun** — Docker container that acts as a WireGuard/OpenVPN gateway. qBittorrent uses `network_mode: "service:gluetun"` so all its traffic routes through the VPN tunnel. Only qBittorrent is routed through Gluetun — Sonarr/Radarr stay on the normal network so they can reach indexers and local clients.
 - **ProtonVPN Plus confirmed (Aug 2026)** — supports port forwarding (Plus and above), works seamlessly with Gluetun's built-in NAT-PMP support.
 - **No sidecar needed** — modern Gluetun handles ProtonVPN port forwarding natively. In the ProtonVPN dashboard, create a WireGuard config with **NAT-PMP (Port Forwarding) ON** on a P2P server, then copy the `PrivateKey` into `.env`. Gluetun writes the forwarded port and pushes it into qBittorrent automatically via `VPN_PORT_FORWARDING_UP_COMMAND`.
 - Avoid for seeding: Mullvad (removed port forwarding 2023), NordVPN (never had it)
 
-### Download Client (LXC B)
+### Download Client (Docker VM)
 
 - **qBittorrent** — torrent client with built-in search
 - Port: 8080 (web UI, exposed via gluetun), 6881 (torrent traffic)
-- Downloads to: `/mnt/downloads/incomplete` → `/mnt/downloads/complete`
+- Downloads to: `/data/downloads/incomplete` → `/data/downloads/complete`
 - Runs inside Gluetun's network namespace — no direct internet access, fully isolated behind VPN
 
-### Indexer Manager (LXC B)
+### Indexer Manager (Docker VM)
 
 - **Prowlarr** — single proxy for all torrent/usenet indexers. You add indexers here once and they sync automatically to Sonarr, Radarr, Lidarr, and Readarr
 - Port: 9696
 
-### Media Managers (LXC B)
+### Media Managers (Docker VM)
 
-- **Sonarr** — TV show management. Monitors shows you want, searches for new episodes via Prowlarr, sends them to qBittorrent, then renames and organizes them into `/mnt/media/tv`
+- **Sonarr** — TV show management. Monitors shows you want, searches for new episodes via Prowlarr, sends them to qBittorrent, then renames and organizes them into `/data/media/tv`
 - Port: 8989
-- **Radarr** — Movie management. Same workflow as Sonarr for movies into `/mnt/media/movies`
+- **Radarr** — Movie management. Same workflow as Sonarr for movies into `/data/media/movies`
 - Port: 7878
-- **Lidarr** — Music management. Monitors artists/albums, downloads and organizes into `/mnt/media/music`
+- **Lidarr** — Music management. Monitors artists/albums, downloads and organizes into `/data/media/music`
 - Port: 8686
-- **Readarr** — Book and audiobook management (optional). Same pattern for ebooks/audiobooks into `/mnt/media/books`
+- **Readarr** — Book and audiobook management (optional). Same pattern for ebooks/audiobooks into `/data/media/books`
 - Port: 8787
 
-### Subtitle Management (optional, LXC B)
+### Subtitle Management (optional, Docker VM)
 
 - **Bazarr** — automatically downloads subtitles for your Sonarr/Radarr media libraries
 - Port: 6767
 
-### Request Management (optional, LXC B)
+### Request Management (optional, Docker VM)
 
 - **Jellyseerr** — clean web UI for users to browse and request movies/TV shows. Integrates with Sonarr/Radarr for downloads and Jellyfin for media visibility
 - Port: 5055
 
-### Utility (optional, LXC B)
+### Utility (optional, Docker VM)
 
 - **Watchtower** — automatically updates running Docker images when new versions are released
 - **FlareSolverr** — proxy that solves Cloudflare challenges for indexers that require it
@@ -123,13 +112,13 @@ chmod -R 775 /mnt/storage/media /mnt/storage/downloads
    Gluetun ─── ProtonVPN tunnel ─── qBittorrent
       |
       ▼
-/mnt/downloads/complete
+/data/downloads/complete
       |
       ▼  (Sonarr/Radarr rename + move)
       |
-/mnt/storage/media/{tv,movies,music}
+/data/media/{tv,movies,music}
       |
-      ├── Jellyfin (LXC A, read-only) ←── Users
+      ├── Jellyfin (Docker VM, read-only) ←── Users
       └── Bazarr (subtitles)
 
 Indexers via Prowlarr ─── Sonarr/Radarr/Lidarr (normal network)
@@ -137,7 +126,7 @@ Indexers via Prowlarr ─── Sonarr/Radarr/Lidarr (normal network)
                           Jellyseerr ←── user requests
 ```
 
-## docker-compose.yml (structure, LXC B)
+## docker-compose.yml (structure, Docker VM)
 
 All services in one compose file under a shared Docker network. Config stored in `/opt/docker/`.
 
@@ -161,6 +150,7 @@ QBITTORRENT_PASS=your_password
 
 ```yaml
 services:
+  jellyfin:    # port 8096
   gluetun:     # no host port (see below)
   qbittorrent: # port 8080 (exposed via gluetun)
   prowlarr:    # port 9696
@@ -192,11 +182,11 @@ All \*arr services stay on the default bridge network (no VPN), so they remain a
 
 ## [[glance|Glance Dashboard]]
 
-Add widgets after setup (IPs TBD once the LXCs are created — note `.25` is [[immich|Immich]], not this stack):
+Add widgets after setup (use the Docker VM IP — note `.25` is [[immich|Immich]], not this stack):
 
-- Jellyfin: `http://<jellyfin-lxc-ip>:8096`
-- Prowlarr: `http://<arr-lxc-ip>:9696`
-- qBittorrent: `http://<arr-lxc-ip>:8080`
+- Jellyfin: `http://<docker-vm-ip>:8096`
+- Prowlarr: `http://<docker-vm-ip>:9696`
+- qBittorrent: `http://<docker-vm-ip>:8080`
 
 ## Related
 
