@@ -20,7 +20,7 @@ tags:
 - Installer now creates the upload symlinks itself (`ln -s $UPLOAD_DIR app/upload` + machine-learning)
 - `immich` user is now a **system user** (`useradd -r`) — host-side chown is `100000 + container UID` (e.g. `100999`), not the old `101000`
 - Install is a full source build (libjxl/libheif/libraw/ImageMagick/libvips) — needs **6 GB RAM**, Pi-hole off
-- Container IP: `192.168.1.24` — `.23` is taken by the [[hermes_agent|Hermes]] LXC
+- Container IP: `192.168.1.25` — `.23` is taken by the [[hermes_agent|Hermes]] LXC
 - Storage: `/mnt/storage/immich-photos` on the mergerfs pool, bind-mounted into the container
 
 ## Related
