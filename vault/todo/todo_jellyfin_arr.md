@@ -9,7 +9,6 @@ tags:
   - media
   - arr
 ---
-
 # Jellyfin + Arr Stack
 
 ## Decision: Single Privileged LXC with Docker
@@ -24,7 +23,6 @@ Docker-in-LXC research (Jul 2026):
 ## Specs
 
 - Type: Privileged LXC
-- IP: 192.168.1.25
 - Cores: 4
 - RAM: 4096 MB
 - Swap: 1024 MB
