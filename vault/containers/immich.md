@@ -8,7 +8,6 @@ tags:
   - photo
   - media
 ---
-
 # Immich
 
 ## Install History
@@ -18,7 +17,7 @@ tags:
 
 ## Working Setup (06/08/2026)
 
-- **Web UI:** `http://192.168.1.25:2283` (host is `.20`; `.23` is the [[hermes_agent|Hermes]] LXC)
+- **Web UI:** `http://192.168.1.25:2283`
 - **Storage:** `/mnt/storage/immich-photos` on the mergerfs pool, bind-mounted at `/mnt/immich-photos` (`pct set 104 -mp0 ...`); `IMMICH_MEDIA_LOCATION=/mnt/immich-photos` in `/opt/immich/.env`; upload symlinks re-pointed to the mount
 - **immich user:** UID 999, GID 991 → host-side ownership `100999:100991` (100000 + UID/GID)
 - **Managed folders** (`thumbs`, `upload`, `backups`, `library`, `profile`, `encoded-video`) live under `/mnt/immich-photos`; each needs a `.immich` marker file (Immich creates them on startup once it can write)
