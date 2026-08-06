@@ -25,7 +25,7 @@ tags:
 
 ## Install Instructions (verified 06/08/2026)
 
-Simple one-command-at-a-time procedure. Host shell = Proxmox host (root@192.168.1.20). Container shell = inside the LXC (`pct exec 104 -- ...` or the container console).
+Simple one-command-at-a-time procedure. **Host shell** = Proxmox host (root@192.168.1.20) — real root, can chown bind mounts. **Container** = inside the LXC: run `pct exec 104 -- <cmd>` from the host, or `pct enter 104`. Note: `pct exec 104 -- ...` *executes inside the container* — container root is NOT privileged over the bind mount.
 
 1. **Turn Pi-hole OFF** — dependency downloads fail while it's on. (Pi-hole is the [[pihole|rasppi]] at 192.168.1.10)
 2. **Host shell:** run the community-scripts Immich installer (Advanced) — creates container 104, 4 cores / 6 GB RAM / 24 GB disk, IP as chosen, AMD GPU passthrough, compiles photo libraries (15 min–2 h). *Pi-hole must be off for this.*
@@ -34,11 +34,11 @@ Simple one-command-at-a-time procedure. Host shell = Proxmox host (root@192.168.
 5. **Host shell:** `mkdir -p /mnt/storage/immich-photos` — create the storage folder on the mergerfs pool.
 6. **Host shell:** `chown -R 100999:100991 /mnt/storage/immich-photos` — give it to the container's immich user (100000 + container UID/GID = 999/991). *Do this on the host — inside the container it fails with "Operation not permitted".*
 7. **Host shell:** `pct set 104 -mp0 /mnt/storage/immich-photos,mp=/mnt/immich-photos` — bind-mount the pool into the container.
-8. **Host shell:** `pct exec 104 -- sed -i 's|^IMMICH_MEDIA_LOCATION=.*|IMMICH_MEDIA_LOCATION=/mnt/immich-photos|' /opt/immich/.env` — point Immich's media location at the mount.
-9. **Host shell:** `pct exec 104 -- rm /opt/immich/app/upload /opt/immich/app/machine-learning/upload && pct exec 104 -- ln -s /mnt/immich-photos /opt/immich/app/upload && pct exec 104 -- ln -s /mnt/immich-photos /opt/immich/app/machine-learning/upload` — re-point the upload symlinks at the mount.
+8. **Container:** `sed -i 's|^IMMICH_MEDIA_LOCATION=.*|IMMICH_MEDIA_LOCATION=/mnt/immich-photos|' /opt/immich/.env` — point Immich's media location at the mount (via `pct exec 104 -- sed -i ...`).
+9. **Container:** `rm /opt/immich/app/upload /opt/immich/app/machine-learning/upload && ln -s /mnt/immich-photos /opt/immich/app/upload && ln -s /mnt/immich-photos /opt/immich/app/machine-learning/upload` — re-point the upload symlinks at the mount (via `pct exec 104 -- rm ... && pct exec 104 -- ln -s ...`).
 10. **Host shell:** `mkdir -p /mnt/storage/immich-photos/{thumbs,upload,backups,library,profile,encoded-video} && chown -R 100999:100991 /mnt/storage/immich-photos && chmod -R 775 /mnt/storage/immich-photos` — pre-create Immich's managed folders with correct ownership. *On the host, as real root — container root can't.*
-11. **Host shell:** `pct exec 104 -- runuser -u immich -- bash -c 'for d in thumbs upload backups library profile encoded-video; do touch /mnt/immich-photos/$d/.immich; done'` — create the `.immich` marker files as the **immich** user (this is the crash-loop fix — as root inside the container it fails with "Permission denied").
-12. **Host shell:** `pct exec 104 -- systemctl restart immich-web immich-ml` — start both services.
+11. **Container, as the immich user (NOT root):** `runuser -u immich -- bash -c 'for d in thumbs upload backups library profile encoded-video; do touch /mnt/immich-photos/$d/.immich; done'` — create the `.immich` marker files (via `pct exec 104 -- runuser -u immich -- ...`). This is the crash-loop fix — as root inside the container it fails with "Permission denied"; as immich it works.
+12. **Container:** `systemctl restart immich-web immich-ml` — start both services (via `pct exec 104 -- systemctl restart immich-web immich-ml`).
 13. **Verify:** open `http://192.168.1.25:2283`, upload a test photo, confirm it lands in `/mnt/storage/immich-photos`.
 14. **Turn Pi-hole back ON.**
 
