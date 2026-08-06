@@ -8,7 +8,6 @@ tags:
   - photo
   - media
 ---
-
 # Immich
 
 ## Install History
