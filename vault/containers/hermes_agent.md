@@ -42,6 +42,37 @@ Herdr 0.7.5 is installed on the LXC as the agent session manager (replaces tmux)
 
 ## Changes
 
+### 2026-08-06 — Telegram channel removed
+
+- Removed the Telegram gateway channel — unused; Discord is the only messaging platform in active use. Verified no cron jobs or features deliver to Telegram.
+- `~/.hermes/.env` — commented out `TELEGRAM_BOT_TOKEN`, `TELEGRAM_ALLOWED_USERS`, `TELEGRAM_HOME_CHANNEL` (backup: `~/.hermes/.env.bak-telegram-20260806`, token intact, reversible)
+- `~/.hermes/config.yaml` — removed the `telegram:` section via `hermes config unset telegram`
+- Gateway not restarted during the change; the running process keeps the bot connection until the next `hermes-gateway.service` restart, then it drops permanently
+
+### 2026-08-06 — Discord voice: first-utterance debugging parked
+
+- First utterance after each VC join still transcribes as garbage (e.g. *"I'm going to go to the next one."*) after three patch attempts. Root cause: socket warm-up audio has energy, not silence, so the v3 silence-trim can't catch it.
+- **Parked** — next steps logged in [[todo_hermes|Hermes TODO]]: save first-utterance raw audio, inspect waveform, likely require sustained speech before treating audio as an utterance
+- Local patches (v1 phrase filter + v3 silence trim) remain live but must be re-applied after `hermes update`
+
+### 2026-08-05 — Discord voice: ambient bed off + local hallucination patches
+
+- Ambient bed disabled (`hermes config set discord.voice_fx.ambient_enabled false`) — the synthesised pad loop made the bot hear its own audio and hallucinate lyrics; supersedes the ambient enable in the section below
+- LOCAL PATCH (`tools/voice_mode.py`): `_repeated_phrase_hallucination()` flags any 4+ word contiguous sequence appearing 2+ times; repeat-filler regex now requires 3+ filler words; verified against 18 test cases
+- LOCAL PATCH v3 (`plugins/platforms/discord/adapter.py`): `VoiceReceiver.trim_leading_silence()` cuts silent prefixes before STT (20ms RMS windows, threshold 200, 80ms lead-in) — replaces the rejected v2 drop-first-utterance hack
+- ⚠️ Both patches are local — must be re-applied after `hermes update`; need gateway restart
+
+### 2026-08-05 — Groq STT live
+
+- `stt.provider` switched `local` → `groq` with `stt.groq.model: whisper-large-v3-turbo` (free tier, ~6x faster than large-v3, near-identical accuracy); `GROQ_API_KEY` added to `~/.hermes/.env` (chmod 600) and verified via `GET /v1/models`
+- Local STT model had been dropped `base` → `tiny` while on faster-whisper; Groq now supersedes it for Discord voice
+- Takes effect after gateway restart (`/restart` or `systemctl --user restart hermes-gateway`); TTS stays on Edge (free, no key)
+
+### 2026-08-05 — TUI npm install failure fixed
+
+- `hermes --tui` failed with "npm install failed": repo `.npmrc` `engine-strict=true` requires `npm <11.10.0 || >=11.17.0`, system npm was 11.11.0
+- Installed user-local `npm@11.17.0` (`--prefix ~/.npm-global`), added `~/.npm-global/bin` to PATH in `~/.bashrc` — takes PATH precedence over system npm for future updates
+
 ### 2026-08-05 — Discord Voice: acks + ambient bed
 
 - Enabled `discord.voice_fx` (Discord-only): `enabled: true`, `ack_enabled: true` — bot speaks a canned phrase ("Let me look into that.") before tool calls during VC conversations, plus a low-volume ambient "thinking" bed while tools run
