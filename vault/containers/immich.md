@@ -28,8 +28,8 @@ Simple one-command-at-a-time procedure. **Host shell** = Proxmox host (root@192.
 
 1. **Turn Pi-hole OFF** — dependency downloads fail while it's on. (Pi-hole is the [[pihole|rasppi]] at 192.168.1.10)
 2. **Host shell:** run the community-scripts Immich installer (Advanced) — creates container 104, 4 cores / 6 GB RAM / 24 GB disk, IP as chosen, AMD GPU passthrough, compiles photo libraries (15 min–2 h). *Pi-hole must be off for this.*
-3. **Host shell:** `pct set 104 -memory 4096` — drop RAM from 6 GB to 4 GB now the build is done.
-4. **Host shell:** `pct set 104 -net0 name=eth0,bridge=vmbr0,gw=192.168.1.254,ip=192.168.1.25/24,type=veth` — set the static IP to `192.168.1.25` (NOT `.23` — that's the [[hermes_agent|Hermes]] LXC).
+3. **Host shell:** `pct set 104 -memory 4096` — drop RAM from 6 GB to 4 GB now the build is done. (**or do in web ui LXC settings**)
+4. **Host shell:** `pct set 104 -net0 name=eth0,bridge=vmbr0,gw=192.168.1.254,ip=192.168.1.25/24,type=veth` — set the static IP to `192.168.1.25` (**or do in web ui LXC settings**)
 5. **Host shell:** `mkdir -p /mnt/storage/immich-photos` — create the storage folder on the mergerfs pool.
 6. **Host shell:** `chown -R 100999:100991 /mnt/storage/immich-photos` — give it to the container's immich user (100000 + container UID/GID = 999/991). *Do this on the host — inside the container it fails with "Operation not permitted".*
 7. **Host shell:** `pct set 104 -mp0 /mnt/storage/immich-photos,mp=/mnt/immich-photos` — bind-mount the pool into the container.
