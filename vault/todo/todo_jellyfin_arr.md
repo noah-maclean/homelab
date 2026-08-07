@@ -190,6 +190,7 @@ Add widgets after setup (use the Docker VM IP — note `.25` is [[immich|Immich]
 
 ## Related
 
+- [[jellyfin_arr]]
 - [[glance]]
 - [[immich]]
 - [[todo_proxmox]]
