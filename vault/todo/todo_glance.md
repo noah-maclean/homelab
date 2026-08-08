@@ -22,6 +22,7 @@ tags:
 - [x] [[tailscale|tailscale]] devices
 - [x] change icons to be consistent (crafty controller does not have an icon on simple icons)
 - [x] [[immich|immich]]
+
 ## Related
 
 - [[glance]]
