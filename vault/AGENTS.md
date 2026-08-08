@@ -84,7 +84,24 @@ Treat documentation accuracy as the primary test. Re-read edited commands for qu
 
 ## Commits & Pull Requests
 
-Recent history uses timestamped backup commits, such as `vault backup: 2026-07-08 17:16:10`. For manual commits, use a brief imperative summary scoped to the note, such as `docs: update Tailscale route setup`. Keep each commit focused. Pull requests should explain the operational impact, list files or services affected, link any relevant task, and include screenshots only when documenting rendered layout or visual configuration.
+### Commit message style
+
+Use Conventional Commits-style prefixes (`type: subject`). This is a documentation repo, so the vast majority of manual commits are `docs:`. Types in use:
+
+| Type | When to use | Example |
+|------|-------------|---------|
+| `docs:` | Default for any vault content change (notes, logs, guides, fixes to content) | `docs: update Tailscale route setup` |
+| `fix:` | Correcting previously wrong content, when the correction is the whole point | `docs: fix host shell vs container labels in Immich install instructions` |
+| `chore:` | Maintenance with no content change (automated, e.g. todo reordering) | `chore: reorder todo checkboxes (active before completed)` |
+
+Rules:
+
+- **Always include a lowercase type prefix, then `:`, then the subject.** A bare subject like `Update Jellyfin ARR deployment guidance` does not match this repo's style and makes history hard to scan. This rule applies to every agent (Hermes, Codex, Claude Code, Cursor, etc.).
+- Subject is a brief imperative summary scoped to the note or area touched. Mention the date when the change is to a log entry (e.g. `docs: log Tuya lamp integration fix in 2026-08-08`).
+- Keep each commit focused on one change. A content correction inside a larger docs change is normally folded into the same `docs:` commit, not a separate `fix:`.
+- Timestamped Obsidian sync backups (`vault backup: 2026-07-08 17:16:10`) are generated automatically — leave those as they are; the prefix rule applies to manual commits.
+
+Pull requests should explain the operational impact, list files or services affected, link any relevant task, and include screenshots only when documenting rendered layout or visual configuration.
 
 **Attribution:** When committing, identify your agent with `git -c user.name="<agent>" -c user.email="<agent>@users.noreply.github.com" commit` so the commit history shows who made the change. Examples: `opencode`, `claude-code`, `cursor`, `hermes`. This is per-command — no config files are modified.
 
